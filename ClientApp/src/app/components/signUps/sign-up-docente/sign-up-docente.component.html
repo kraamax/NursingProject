@@ -1,0 +1,163 @@
+
+<Body>
+    <div class="row">
+        <div class="col-lg-3">
+
+        </div>
+        <div class="col-lg-6">
+
+            <mat-card>
+                <div class="container">
+                    <mat-card-content>
+
+                        <form [formGroup]="userForm">
+                            <div class="row">
+
+                                <div class="col-lg-2 ">
+                                    <button mat-icon-button style="background: #fafafa;" (click)="goBack()">
+                                        <mat-icon>arrow_back</mat-icon>
+                                    </button>
+                                </div>
+
+                                <div class="col-lg-8 ">
+                                    <h2 class="text-center">Registrese como Docente</h2>
+                                </div>
+                                <div class="col-lg-2"></div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group ">
+                                        <label for="nombres">Primer Nombre*</label>
+                                        <input type="text" class="form-control mb-4" formControlName="firstName"
+                                            placeholder="Primer nombre" name="firstName" id="firstName"
+                                            [(ngModel)]="docente.firstName">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Apellidos">Primer Apellido*</label>
+                                        <input type="text" class="form-control mb-4" formControlName="firstLastName"
+                                            placeholder="Primer apellido" name="firstLastName" id="firstLastName"
+                                            [(ngModel)]="docente.firstLastName">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Identificacion">Identificación*</label>
+
+                                        <input type="number" class="form-control mb-4" formControlName="identificacion"
+                                            placeholder="identificacion" name="identificacion" id="identificacion"
+                                            [(ngModel)]="docente.idDocente">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="sexo">Seleccione su sexo*</label>
+                                        <select class="form-control mb-4" formControlName="sex" id="sexo" name="sexo"
+                                            [(ngModel)]="docente.sex">
+                                            <option value="" selected>Seleccione...</option>
+                                            <option value="Masculino">Masculino</option>
+                                            <option value="Femenino">Femenino</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label for="email">Email*</label>
+                                        <input type="email" formControlName="email" id="email"
+                                            class="form-control" placeholder="E-mail">
+                                        <div
+                                            *ngIf="userForm.get('email').hasError('required') && userForm.get('email').touched">
+                                            <span style="color: red; font-size: small;">Email requerido</span>
+                                        </div>
+                                        <div
+                                            *ngIf="userForm.get('email').hasError('email') && userForm.get('email').touched">
+                                            <span style="color: red; font-size: small;">Email invalido</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mb-4">
+                                        <label for="Contraseña">Contraseña*</label>
+                                        <input type="password" class="form-control mb-4" formControlName="password"
+                                            placeholder="Contraseña" name="password" id="password"
+                                            [(ngModel)]="docente.account.password">
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group ">
+                                        <label for="nombres">Segundo Nombre</label>
+                                        <input type="text" class="form-control mb-4" formControlName="secondName"
+                                            placeholder="Segundo nombre" name="secondName" id="secondName"
+                                            [(ngModel)]="docente.secondName">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Apellidos">Segundo Apellido</label>
+                                        <input type="text" class="form-control mb-4" formControlName="secondLastName"
+                                            placeholder="Segundo apellido" name="secondLastName" id="secondLastName"
+                                            [(ngModel)]="docente.secondLastName">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="telefono">Teléfono*</label>
+                                        <input type="number" class="form-control mb-4" formControlName="phone"
+                                            placeholder="Telefono" name="telefono" id="phone"
+                                            [(ngModel)]="docente.phone">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="fechaNacimiento">Fecha de Nacimiento*</label>
+                                        <input type="date" class="form-control mb-4" formControlName="bornDate"
+                                            id="bornDate" [(ngModel)]="docente.bornDate" style="height: 30px;">
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label for="email">Confirmar Email*</label>
+                                        <input type="email" formControlName="confirmEmail"
+                                            id="confirmEmail" class="form-control"
+                                            placeholder="Confirmar Email">
+                                        <div
+                                            *ngIf="userForm.get('confirmEmail').hasError('required') && userForm.get('confirmEmail').touched">
+                                            <span style="color: red; font-size: small;">Email requerido</span>
+
+                                        </div>
+                                        <div
+                                            *ngIf="userForm.get('confirmEmail').hasError('email') && userForm.get('confirmEmail').touched">
+                                            <span style="color: red; font-size: small;">Email invalido</span>
+
+                                        </div>
+                                        <div
+                                            *ngIf="!(userForm.get('confirmEmail').value ===userForm.get('email').value) && userForm.get('confirmEmail').touched">
+                                            <span style="color: red; font-size: small;">No coincide</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label for="ConfirmarContraseña">Confirmar contraseña*</label>
+                                        <input type="password" class="form-control" formControlName="confirmPassword"
+                                            placeholder="Confirmar contraseña" name="confirmPassword"
+                                            id="confirmPassword">
+                                        <div
+                                            *ngIf="!(userForm.get('confirmPassword').value ===userForm.get('password').value) && userForm.get('confirmPassword').touched">
+                                            <span style="color: red; font-size: small;">Las contraseñas no
+                                                coinciden</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3"></div>
+                                <div class="col-lg-3">
+                                    <button class="btn btn-primary"
+                                        [disabled]="!(userForm.valid) || !(userForm.get('confirmEmail').value ===userForm.get('email').value) || !(userForm.get('confirmPassword').value ===userForm.get('password').value)"
+                                        type="submit" (click)="addDocente()">Guardar</button>
+                                </div>
+                            </div>
+
+
+                        </form>
+                        <br>
+<br>
+<br>
+<br>
+                    </mat-card-content>
+                </div>
+
+            </mat-card>
+        </div>
+    </div>
+
+</Body>

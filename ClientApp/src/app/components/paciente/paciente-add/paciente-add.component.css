@@ -1,0 +1,38 @@
+input{
+
+    font-size: 15px;
+    height: 30px;
+    width:200px ;
+}
+label{
+
+    font-size: 15px;
+}
+select{
+    font-size: 15px;
+    height: 30px;
+    width:200px ;
+
+}
+option{
+
+    font-size: 15px;
+    height:30px;
+    width:200px ;
+}
+
+button{
+
+    background-color:#1205cc;
+}
+button:hover{
+
+background-color: #190aec;
+
+}
+span{
+color: red;
+}
+body{
+    background: #fafafa;
+}

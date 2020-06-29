@@ -1,0 +1,149 @@
+<body>
+  <div class="row">
+    <div class="col-lg-4 ">
+      <div class="form-group">
+        <label for="Otherdiagnostic">Menarquia</label>
+        <input
+          type="text"
+          class="form-control form-control-lg"
+          placeholder="Menarquia"
+          id="menarquia"
+          name="menarquia"
+          [(ngModel)]="ginecoBackground.menarche"
+        />
+      </div>
+      <div class="form-group">
+        <label for="FUM">FUM</label>
+        <input
+          type="date"
+          class="form-control form-control-lg"
+          style="height:40px ;"
+          id="fum"
+          name="fum"
+          [(ngModel)]="ginecoBackground.fum"
+        />
+      </div>
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="form-group">
+            <label for="G">G</label>
+            <select class="form-control" id="selectorG" [(ngModel)]="ginecoBackground.g" style="width: 70px;">
+              <option selected="selected" [value]="0">
+                0
+              </option>
+              <option *ngFor="let n of numbers" [value]="n">{{ n }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Otherdiagnostic">C</label>
+            <select class="form-control" id="selectorC" [(ngModel)]="ginecoBackground.c" style="width: 70px;">
+              <option selected="selected" [value]="0">
+                0
+              </option>
+              <option *ngFor="let n of numbers" [value]="n">{{ n }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="form-group">
+            <label for="Otherdiagnostic">P</label>
+            <select class="form-control" id="selectorP" [(ngModel)]="ginecoBackground.p" style="width: 70px;">
+              <option selected="selected" [value]="0">
+                0
+              </option>
+              <option *ngFor="let n of numbers" [value]="n">{{ n }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Otherdiagnostic">A</label>
+            <select class="form-control" id="selectorA" [(ngModel)]="ginecoBackground.a" style="width: 70px;">
+              <option selected="selected" [value]="0">
+                0
+              </option>
+              <option *ngFor="let n of numbers" [value]="n">{{ n }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label for="Ciclos">Ciclos</label>
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              placeholder="Ciclos"
+              id="ciclos"
+              name="ciclos"
+              [(ngModel)]="ginecoBackground.ciclos"
+            />
+          </div>
+          <div class="form-group">
+            <label for="IVS">IVS</label>
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              placeholder="IVS"
+              id="ivs"
+              name="ivs"
+              [(ngModel)]="ginecoBackground.ivs"
+            />
+          </div>
+          <div class="form-group">
+            <label for="Menopausia">Menopausia</label>
+            <input
+              type="date"
+              class="form-control form-control-lg"
+              style="height:40px ;"
+              id="menopausia"
+              name="menopausia"
+              [(ngModel)]="ginecoBackground.menopausia"
+            />
+          </div>
+          <label for=""></label>
+          <div class="form-group">
+              <label><input type="checkbox" style="width: 20px; height: 20px; vertical-align: bottom;" id="cbxDiabetes"  [(ngModel)]="ginecoBackground.performedCytology" > Realizó citología</label>
+          </div>    
+    </div>
+   
+    <div class="col-lg-4">
+       
+        <div class="form-group"  [hidden]=!ginecoBackground.performedCytology>
+            <label for="Fecha citologia">Fecha Citología</label>
+            <input
+              type="date"
+              class="form-control form-control-lg"
+              style="height:40px ;"
+              id="fechaCitologia"
+              name="fechaCitologia"
+              [disabled]=!ginecoBackground.performedCytology
+              [(ngModel)]="ginecoBackground.dateLastCytology"
+            />
+        </div>
+        <div class="form-group" [hidden]=!ginecoBackground.performedCytology>
+            <label for="resultados">Resultados Citología</label>
+            <textarea
+              class="form-control rounded-0"
+              name="otherDiagnostic"
+              id="resultadosCitologia"
+              cols="30"
+              rows="5"
+              [disabled]=!ginecoBackground.performedCytology
+              [(ngModel)]="ginecoBackground.results"
+            ></textarea>
+          </div>
+         
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-lg-4">
+      </div>
+      <div class="col-lg-4">
+    </div>
+    <div class="col-lg-4">
+        <div class="from-group" style="text-align: right; vertical-align: top;">
+            <button class="btn btn-primary" (click)="addGinecoBackground()">Guardar</button>
+          </div>
+    </div>
+  </div>
+</body>

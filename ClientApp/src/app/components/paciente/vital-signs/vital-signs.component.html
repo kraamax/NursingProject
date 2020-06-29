@@ -1,0 +1,61 @@
+<h2>Signos vitales <button class="btn btn-Primary" style="background:#fafafa;" (click)="toggleEdit()"><img style="height: 20px; width: 20px;" src="../../../../assets/images/pencil.png"></button></h2>
+<div class="container">
+<div class="row">
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label for="presionArterial">Presión Arterial (mmHg)</label>
+            <div class="row">
+                <div class="col-lg-3">
+                    <input type="number" [readonly]=!isEditable class="form-control form-control-lg " style="width: 75px; font-size: 14px;" [(ngModel)]="vitalSigns.bps" placeholder="PAS" id="presionArterial">
+                </div>
+                <div class="col-lg-1">
+                    <label for="/" style="font-size: 20px;">/</label>
+                </div>
+                <div class="col-lg-3">
+                    <input type="number" [readonly]=!isEditable class="form-control form-control-lg " style="width: 75px; font-size: 14px;" [(ngModel)]="vitalSigns.bpd" placeholder="PAD" id="presionArterial">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="respiracion">Respiración</label>
+            <input type="number" [readonly]=!isEditable class="form-control form-control-lg " [(ngModel)]="vitalSigns.breath" placeholder="Respiración" id="respiracion">
+        </div>
+        <div class="form-group">
+            <label for="pulso">Pulso (ppm)</label>
+            <input type="number" [readonly]=!isEditable class="form-control form-control-lg " [(ngModel)]="vitalSigns.pulse" placeholder="Pulso" id="pulso">
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label for="temperatura">Temperatura (°C)</label>
+            <input type="number" [readonly]=!isEditable class="form-control form-control-lg " [(ngModel)]="vitalSigns.temperature" placeholder="Temperatura" id="temperatura">
+        </div>
+        <div class="form-group">
+            <label for="TipoGlicemia">Tipo de glicemia</label>
+            <select
+              class="form-control"
+              id="tipoGlicemia"
+              name="tipoGlicemia"
+              [(ngModel)]="vitalSigns.typeGlycemia"
+              style="height: 35px;"
+              [disabled]=!isEditable
+            >
+              <option value="preprandial">Preprandial</option>
+              <option value="postprandial">Postprandial</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="glicemia">Glicemia (mg/dl)</label>
+            <input class="form-control form-control-lg " [readonly]=!isEditable type="number" placeholder="Glicemia" [(ngModel)]="vitalSigns.glycemia" id="glicemia">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+        <div class="form-group" style="text-align: right;">
+            <button class="btn btn-primary" [hidden]=!isEditable (click)="addVitalSigns()">Guardar</button>
+        </div>
+    </div>
+</div>
+</div>

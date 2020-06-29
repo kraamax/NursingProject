@@ -1,0 +1,32 @@
+
+<h2>Revisión por sistema y Examen Físico <button class="btn btn-Primary" style="background:#fafafa;" (click)="toggleEdit()"><img style="height: 20px; width: 20px;" src="../../../../assets/images/pencil.png"></button></h2>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10">
+                <div class="form-group">
+                    <label for="perimetroAbdominal">Interpretacion</label>
+                    <textarea
+                    class="form-control rounded-0"
+                    name="otherDiagnostic"
+                    id="textarea"
+                    cols="30"
+                    rows="5"
+                    [readonly]=!isEditable
+                    [(ngModel)]="physicalExam.description"
+                  ></textarea>
+                </div>
+            </div>
+          
+        </div>
+        <div class="row">
+            <div class="col-lg-5"></div>
+
+            <div class="col-lg-5">
+                <div class="form-group" style="text-align: right;">
+                    <button class="btn btn-primary" [hidden]=!isEditable (click)="addPhysicalExam()">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>    
+</body>

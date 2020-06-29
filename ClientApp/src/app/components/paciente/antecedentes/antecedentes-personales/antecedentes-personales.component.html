@@ -1,0 +1,85 @@
+<body>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label for="Otherdiagnostic">Quirurgicos</label>
+          <textarea
+            class="form-control rounded-0"
+            name="otherDiagnostic"
+            id="textarea"
+            cols="30"
+            rows="5"
+            [(ngModel)]="personalBackground.surgical"
+            [readonly]=!isEditable
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="Otherdiagnostic">Alergicos</label>
+          <textarea
+            class="form-control rounded-0"
+            name="otherDiagnostic"
+            id="textarea"
+            cols="30"
+            rows="5"
+            [(ngModel)]="personalBackground.allergic"
+            [readonly]=!isEditable
+          ></textarea>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label for="Otherdiagnostic">Traumaticos</label>
+          <textarea
+            class="form-control rounded-0"
+            name="otherDiagnostic"
+            id="textarea"
+            cols="30"
+            rows="5"
+            [(ngModel)]="personalBackground.traumatic"
+            [readonly]=!isEditable
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="Otherdiagnostic">Patologicos</label>
+          <textarea
+            class="form-control rounded-0"
+            name="otherDiagnostic"
+            id="textarea"
+            cols="30"
+            rows="5"
+            [(ngModel)]="personalBackground.phatological"
+            [readonly]=!isEditable
+          ></textarea>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label for="Otherdiagnostic">Hospitalizaciones Previas</label>
+          <textarea
+            class="form-control rounded-0"
+            name="otherDiagnostic"
+            id="textarea"
+            cols="30"
+            rows="5"
+            [(ngModel)]="personalBackground.hospitalization"
+            [readonly]=!isEditable
+          ></textarea>
+        </div>
+    
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+      </div>
+      <div class="col-lg-4">
+    </div>
+    <div class="col-lg-4">
+        <div class="from-group" style="text-align: right; vertical-align: top;">
+          <button class="btn btn-primary" *ngIf="isEditable" (click)="addPersonalBackground()">Guardar</button>
+          <button class="btn btn-primary" *ngIf="isEditable===false" (click)="toggleEdit()">Editar</button>
+          </div>
+    </div>
+  </div>
+
+</body>

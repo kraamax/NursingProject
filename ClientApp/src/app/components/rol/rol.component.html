@@ -1,0 +1,25 @@
+
+<div class="container">
+    <header>
+        <br>
+        <h2 class="text-center" style="padding-top: 40px;">Seleccione su rol</h2>
+    </header>
+    <br>
+    <div class="row" >
+        <div class="col-3"></div>
+        <div class="col-3">
+            <button mat-button (click)="goToSignUpTeacher()">
+                <mat-icon svgIcon="teacher" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+             
+                <label for="student">Docente</label>
+            </button>
+        </div>
+        <div class="col-3">
+            <button mat-button (click)="goToSignUpStudent()" >
+                <mat-icon svgIcon="student" style="text-align: center;" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+                  <label for="student">   Estudiante</label>
+            </button>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>

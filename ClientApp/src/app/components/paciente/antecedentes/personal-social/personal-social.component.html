@@ -1,0 +1,188 @@
+<h2>Estilo de vida <button class="btn btn-Primary" style="background:#fafafa;" (click)="toggleEdit()"><img style="height: 20px; width: 20px;" src="../../../../assets/images/pencil.png"></button></h2>
+<div class="container">
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label for="habitosNutricionales">Hábitos nutricionales</label>
+            <textarea
+              class="form-control rounded-0"
+              name="nutricionalHabits"
+              id="textarea"
+              cols="30"
+              rows="2"
+              [(ngModel)]="lifeStyle.nutricionalHabit.description"
+              [readonly]=!isEditable
+            ></textarea>
+          </div>
+    </div>
+    <div class="col-lg-2">
+        <div class="form-group" style="padding-top: 19px;">
+            <label><input type="radio"    [disabled]=!isEditable value="adecuado" name="nutricionalHabit" style="width: 20px; height: 20px; vertical-align: bottom;" id="cbxDiabetes" [(ngModel)]="lifeStyle.nutricionalHabit.rating"  > Adecuado</label>
+        </div>  
+    </div>
+    <div class="col-lg-2">
+        <div>
+            <div class="form-group" style="padding-top: 19px;">
+                <label><input type="radio"  [disabled]=!isEditable value="inadecuado" name="nutricionalHabit" style="width: 20px; height: 20px; vertical-align: bottom;" id="cbxDiabetes" [(ngModel)]="lifeStyle.nutricionalHabit.rating" > Inadecuado</label>
+            </div> 
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label for="habitosNutricionales">Hábitos higienicos</label>
+            <textarea
+              class="form-control rounded-0"
+              name="nutricionalHabits"
+              id="textarea"
+              cols="30"
+              rows="2"
+              [(ngModel)]="lifeStyle.hygienicHabit.description"
+              [readonly]=!isEditable
+            ></textarea>
+          </div>
+    </div>
+    <div class="col-lg-2">
+        <div class="form-group" style="padding-top: 19px;">
+            <label><input type="radio" [disabled]=!isEditable style="width: 20px; height: 20px; vertical-align: bottom;"
+                name="hygienicHabits" 
+                 id="cbxDiabetes"  value="adecuado"   [(ngModel)]="lifeStyle.hygienicHabit.rating"> Adecuado</label>
+        </div>  
+    </div>
+    <div class="col-lg-2">
+        <div>
+            <div class="form-group" style="padding-top: 19px;">
+                <label><input type="radio" [disabled]=!isEditable value="inadecuado" style="width: 20px; height: 20px; vertical-align: bottom;"   name="hygienicHabits" id="cbxDiabetes"  [(ngModel)]="lifeStyle.hygienicHabit.rating"> Inadecuado</label>
+            </div> 
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label for="habitosNutricionales">Descanso/Sueño</label>
+            <textarea
+              class="form-control rounded-0"
+              name="nutricionalHabits"
+              id="textarea"
+              cols="30"
+              rows="2"
+              [(ngModel)]="lifeStyle.rest.description"
+              [readonly]=!isEditable
+            ></textarea>
+          </div>
+    </div>
+    <div class="col-lg-2">
+        <div class="form-group" style="padding-top: 19px;">
+            <label><input type="radio"  [disabled]=!isEditable value="adecuado"  name="rest" style="width: 20px; height: 20px; vertical-align: bottom;" id="cbxDiabetes"  [(ngModel)]="lifeStyle.rest.rating"> Adecuado</label>
+        </div>  
+    </div>
+    <div class="col-lg-2">
+        <div>
+            <div class="form-group" style="padding-top: 19px;">
+                <label><input type="radio" [disabled]=!isEditable value="inadecuado"  name="rest" style="width: 20px; height: 20px; vertical-align: bottom;" id="cbxDiabetes"  [(ngModel)]="lifeStyle.rest.rating"> Inadecuado</label>
+            </div> 
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label for="habitosNutricionales">Recreación/Ócio</label>
+            <textarea
+              class="form-control rounded-0"
+              name="nutricionalHabits"
+              id="textarea"
+              cols="30"
+              rows="2"
+              [(ngModel)]="lifeStyle.leisure.description"
+              [readonly]=!isEditable
+            ></textarea>
+          </div>
+    </div>
+    <div class="col-lg-2"> 
+        <div class="form-group" style="padding-top: 19px;">
+            <label><input type="radio" [disabled]=!isEditable  value="adecuado"  name="leisure" style="width: 20px; height: 20px; vertical-align: bottom;" id="cbxDiabetes" [(ngModel)]="lifeStyle.leisure.rating"> Adecuado</label>
+        </div>  
+    </div>
+    <div class="col-lg-2">
+        <div>
+            <div class="form-group" style="padding-top: 19px;">
+                <label><input type="radio" [disabled]=!isEditable value="inadecuado" name="leisure" style="width: 20px; height: 20px; vertical-align: bottom;" id="cbxDiabetes" [(ngModel)]="lifeStyle.leisure.rating"> Inadecuado</label>
+            </div> 
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label for="habitosNutricionales">Ejercicio/Deporte</label>
+            <textarea
+              class="form-control rounded-0"
+              name="nutricionalHabits"
+              id="textarea"
+              cols="30"
+              rows="2"
+              [(ngModel)]="lifeStyle.excercise.description"
+              [readonly]=!isEditable
+            ></textarea>
+          </div>
+    </div>
+    <div class="col-lg-2">
+        <div class="form-group" style="padding-top: 19px;">
+            <label><input type="radio" [disabled]=!isEditable value="adecuado"  name="excercise" style="width: 20px; height: 20px; vertical-align: bottom;" id="cbxDiabetes"  [(ngModel)]="lifeStyle.excercise.rating"> Adecuado</label>
+        </div>  
+    </div>
+    <div class="col-lg-2">
+        <div>
+            <div class="form-group" style="padding-top: 19px;">
+                <label><input type="radio" [disabled]=!isEditable value="inadecuado" name="excercise" style="width: 20px; height: 20px; vertical-align: bottom;" id="cbxDiabetes"  [(ngModel)]="lifeStyle.excercise.rating"> Inadecuado</label>
+            </div> 
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label for="habitosNutricionales">Hábitos nocivos</label>
+            <textarea
+              class="form-control rounded-0"
+              name="nutricionalHabits"
+              id="textarea"
+              cols="30"
+              rows="2"
+              [(ngModel)]="lifeStyle.nociveHabit.description"
+              [readonly]=!isEditable
+            ></textarea>
+          </div>
+    </div>
+    <div class="col-lg-2">
+        <div class="form-group" style="padding-top: 19px;">
+            <label><input type="radio" [disabled]=!isEditable value="adecuado" name="nociveHabit" style="width: 20px; height: 20px; vertical-align: bottom;" id="cbxDiabetes"  [(ngModel)]="lifeStyle.nociveHabit.rating"> Adecuado</label>
+        </div>  
+    </div>
+    <div class="col-lg-2">
+        <div>
+            <div class="form-group" style="padding-top: 19px;">
+                <label><input type="radio" [disabled]=!isEditable value="inadecuado"  name="nociveHabit" style="width: 20px; height: 20px; vertical-align: bottom;" id="cbxDiabetes"  [(ngModel)]="lifeStyle.nociveHabit.rating"> Inadecuado</label>
+            </div> 
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4">
+ 
+    </div>
+    <div class="col-lg-4">
+        
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group" style="text-align: right;">
+            <button class="btn btn-primary" [hidden]=!isEditable (click)="addLifeStyle()">Guardar</button> 
+        </div>
+    </div>
+   
+</div>
+</div>

@@ -1,0 +1,55 @@
+<nav id="navbar" class="navbar navbar-expand-lg navbar-light " >
+    <div class="container-fluid">
+      <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation" *ngIf="!navbarOpen">
+        <i class="fa fa-align-justify"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="nav navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" routerLinkActive="link-active"  [routerLink]="['/login']">Ingresa</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="link-active"  [routerLink]="['/rol']">Registrate</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<section id="login" class="mb-5 mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4 mx-auto">
+          <div class="card_login">
+            <div class="card">
+              <div class="card-body text-center">
+                <form #formLogin="ngForm" (ngSubmit)="validarLogin()">
+                  <h1 class="h3 mb-3 font-weight-normal" *ngIf="!isError">Iniciar Sesión</h1>
+                  <div class="alert alert-danger" role="alert" *ngIf="isError">
+                    Something is wrong!
+                  </div>
+                  <div class="form-group">
+                    <input type="text" id="user" name="user" class="form-control" placeholder="Usuario" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" 
+                      required>
+                  </div>
+                  <div class="form-gruop">
+                  <label for=""><a [routerLink]="['/rol']">Eres nuevo? Registrate</a></label>
+                </div>
+                  <div class="form-group">              
+
+                  <button type="submit" class="btn btn-lg btn-primary btn-block">Entrar</button>
+                </div>  
+                
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

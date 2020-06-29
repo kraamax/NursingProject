@@ -1,0 +1,53 @@
+input{
+
+    font-size: 15px;
+    height: 30px;
+    width:200px ;
+    font-family: 'Poppins';
+
+}
+label{
+
+    font-size: 15px;
+    font-family: 'Poppins';
+}
+select{
+    font-size: 15px;
+    height: 30px;
+    width:200px ;
+    font-family: 'Poppins';
+
+}
+option{
+
+    font-size: 15px;
+    height:30px;
+    width:200px ;
+    font-family: 'Poppins';
+}
+button{
+
+    background-color:#1205cc;
+    font-family: 'Poppins';
+}
+button:hover{
+
+background-color: #190aec;
+
+}
+span{
+color: red;
+font-family: 'Poppins';
+}
+body{
+    background: #15055c;
+    font-family: 'Poppins';
+}
+
+h2{
+    font-family: 'Poppins';
+}
+mat-card{
+    margin-top: 1px;
+    background: #fafafa;
+}
