@@ -9,10 +9,7 @@
             <mat-card>
                 <div class="container">
                     <mat-card-content>
-
-                        <form [formGroup]="userForm">
                             <div class="row">
-
                                 <div class="col-lg-1 ">
                                     <button mat-icon-button style="background: #fafafa;" (click)="goBack()">
                                         <mat-icon>arrow_back</mat-icon>
@@ -25,146 +22,162 @@
                                 <div class="col-lg-1 "></div>
                             </div>
                             <br>
-                            <div class="form-row">
-                                <div class="col-lg-6 mb-4">
-                                    <div class="form-group ">
-                                        <label for="nombres">Primer Nombre*</label>
-                                        <input type="text" class="form-control mb-4" formControlName="firstName"
-                                            placeholder="Primer nombre" name="firstName" id="firstName"
-                                            [(ngModel)]="student.firstName">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Apellidos">Primer Apellido*</label>
-                                        <input type="text" class="form-control mb-4" formControlName="firstLastName"
-                                            placeholder="Primer apellido" name="firstLastName" id="firstLastName"
-                                            [(ngModel)]="student.firstLastName">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Identificacion">Identificación*</label>
-
-                                        <input type="number" class="form-control mb-4" formControlName="identificacion"
-                                            placeholder="identificacion" name="identificacion" id="identificacion"
-                                            [(ngModel)]="student.idDocente">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="sexo">Seleccione su sexo*</label>
-                                        <select class="form-control mb-4" formControlName="sex" id="sexo" name="sexo"
-                                            [(ngModel)]="student.sex">
-                                            <option value="" selected>Seleccione...</option>
-                                            <option value="Masculino">Masculino</option>
-                                            <option value="Femenino">Femenino</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="locationBiannual">Ubicación semestral*</label>
-
-                                        <input type="number" class="form-control mb-4"
-                                            formControlName="locationBiannual" placeholder="Ubicación semestral"
-                                            name="locationBiannual" id="locationBiannual"
-                                            [(ngModel)]="student.locationBiannual">
-                                    </div>
-                                    <div class="form-group md-4">
-                                        <label for="email">Confirmar Email*</label>
-                                        <input type="email" formControlName="confirmEmail"
-                                            id="confirmEmail" class="form-control"
-                                            placeholder="Confirmar Email">
-                                        <div
-                                            *ngIf="userForm.get('confirmEmail').hasError('required') && userForm.get('confirmEmail').touched">
-                                            <span style="color: red; font-size: small;">Email requerido</span>
-
+                            <mat-horizontal-stepper style="background-color: #fafafa;" #stepper>
+                                <mat-step [stepControl]="personalData">
+                                    <form [formGroup]="personalData">
+                                        <ng-template matStepLabel>Datos personales</ng-template>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group mb-2">
+                                                    <mat-form-field>
+                                                        <mat-label>Primer Nombre</mat-label>
+                                                        <input matInput placeholder="Primer Nombre"
+                                                            formControlName="firstName" id="firstName" [(ngModel)]="user.firstName" required>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="form-group mb-2">
+                                                    <mat-form-field>
+                                                        <mat-label>Primer Apellido</mat-label>
+                                                        <input matInput placeholder="Primer Apellido"
+                                                            formControlName="firstLastName" id="firstLastName" [(ngModel)]="user.firstLastName" required>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="form-group mb-2">
+                                                    <mat-form-field>
+                                                        <mat-label>Identificacion</mat-label>
+                                                        <input matInput type="number" placeholder="Identificacion"
+                                                            formControlName="identificacion"  id="identificacion" [(ngModel)]="user.idDocente" required>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="form-group mb-2">
+                                                    <mat-form-field>
+                                                        <mat-label>Sexo</mat-label>
+                                                        <mat-select formControlName="sex"  id="sex"  [(ngModel)]="user.sex">
+                                                            <mat-option value="Femenino">Femenino</mat-option>
+                                                            <mat-option value="Masculino">Masculino</mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="form-group mb-2">
+                                                    <mat-form-field>
+                                                        <mat-label>Ubicación Semestral</mat-label>
+                                                        <input matInput type="number" placeholder="Ubicación Semestral"
+                                                            formControlName="locationBiannual"  id="locationBiannual" [(ngModel)]="user.locationBiannual" required>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group mb-2">
+                                                    <mat-form-field>
+                                                        <mat-label>Segundo Nombre</mat-label>
+                                                        <input matInput placeholder="Segundo Nombre"
+                                                            formControlName="secondName" id="secondName" [(ngModel)]="user.secondName">
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="form-group mb-2">
+                                                    <mat-form-field>
+                                                        <mat-label>Segundo Apellido</mat-label>
+                                                        <input matInput placeholder="Segundo Apellido"
+                                                            formControlName="secondLastName"  id="secondLastName" [(ngModel)]="user.secondLastName">
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="form-group mb-2">
+                                                    <mat-form-field>
+                                                        <mat-label>Telefono</mat-label>
+                                                        <input matInput type="number" placeholder="Telefono"
+                                                            formControlName="phone"  id="phone"  [(ngModel)]="user.phone" required>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="form-group mb-2">
+                                                    <mat-form-field>
+                                                        <mat-label>Fecha de Nacimiento</mat-label>
+                                                        <input matInput type="date" formControlName="bornDate" id="bornDate"  [(ngModel)]="user.bornDate" required>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div
-                                            *ngIf="userForm.get('confirmEmail').hasError('email') && userForm.get('confirmEmail').touched">
-                                            <span style="color: red; font-size: small;">Email invalido</span>
-
+                                        <div>
+                                            <button mat-button matStepperNext  id="btn-Next">Siguiente</button>
                                         </div>
-                                        <div
-                                            *ngIf="!(userForm.get('confirmEmail').value ===userForm.get('email').value) && userForm.get('confirmEmail').touched">
-                                            <span style="color: red; font-size: small;">No coincide</span>
-                                        </div>
-                                    </div>
-                                        <div class="form-group md-4" >
-                                            <label for="ConfirmarContraseña">Confirmar contraseña*</label>
-                                            <input type="password" class="form-control"
-                                                formControlName="confirmPassword" placeholder="Confirmar contraseña"
-                                                name="confirmPassword" id="confirmPassword">
+                                    </form>
+                                </mat-step>
+                                <mat-step [stepControl]="accountData">
+                                    <form [formGroup]="accountData">
+                                        <ng-template matStepLabel>Datos de su cuenta</ng-template>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group mb-2">
+                                                    <mat-form-field>
+                                                        <mat-label>Email</mat-label>
+                                                        <input matInput type="email"
+                                                            formControlName="email" id="email" required>
+                                                    </mat-form-field>
+                                                    <div
+                                                    *ngIf="accountData.get('email').hasError('required') && accountData.get('email').touched">
+                                                    <span style="color: red; font-size: small;">Email requerido</span>
+                                                </div>
+                                                <div
+                                                    *ngIf="accountData.get('email').hasError('email') && accountData.get('email').touched">
+                                                    <span style="color: red; font-size: small;">Email invalido</span>
+                                                </div>
+                                                </div>
+                                                <div class="form-group mb-2">
+                                                    <mat-form-field>
+                                                        <mat-label>Contraseña</mat-label>
+                                                        <input matInput type="password"  id="password"
+                                                            formControlName="password" required>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group mb-2">
+                                                    <mat-form-field>
+                                                        <mat-label>Confirmar Email</mat-label>
+                                                        <input matInput type="email" id="confirmEmail"
+                                                            formControlName="confirmEmail">
+                                                    </mat-form-field>
+                                                    <div
+                                                *ngIf="accountData.get('confirmEmail').hasError('required') && accountData.get('confirmEmail').touched">
+                                                <span style="color: red; font-size: small;">Email requerido</span>
+    
+                                            </div>
                                             <div
-                                                *ngIf="!(userForm.get('confirmPassword').value ===userForm.get('password').value) && userForm.get('confirmPassword').touched">
+                                                *ngIf="!(accountData.get('confirmEmail').value ===accountData.get('email').value) && accountData.get('confirmEmail').touched">
+                                                <span style="color: red; font-size: small;">No coincide</span>
+                                            </div>
+                                                </div>
+                                                <div class="form-group mb-2">
+                                                    <mat-form-field>
+                                                        <mat-label>Confirmar Contraseña</mat-label>
+                                                        <input matInput type="password"  id="confirmPassword"
+                                                            formControlName="confirmPassword">
+                                                    </mat-form-field>
+                                                    <div
+                                                *ngIf="!(accountData.get('confirmPassword').value ===accountData.get('password').value) && accountData.get('confirmPassword').touched">
                                                 <span style="color: red; font-size: small;">Las contraseñas no
                                                     coinciden</span>
                                             </div>
+                                                </div>
+                                                
+                                            </div>
                                         </div>
-                                   
-
-
-
-
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group ">
-                                        <label for="nombres">Segundo Nombre</label>
-                                        <input type="text" class="form-control mb-4" formControlName="secondName"
-                                            placeholder="Segundo nombre" name="secondName" id="secondName"
-                                            [(ngModel)]="student.secondName">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Apellidos">Segundo Apellido</label>
-                                        <input type="text" class="form-control mb-4" formControlName="secondLastName"
-                                            placeholder="Segundo apellido" name="secondLastName" id="secondLastName"
-                                            [(ngModel)]="student.secondLastName">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="telefono">Teléfono*</label>
-                                        <input type="number" class="form-control mb-4" formControlName="phone"
-                                            placeholder="Telefono" name="telefono" id="phone"
-                                            [(ngModel)]="student.phone">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="fechaNacimiento">Fecha de Nacimiento*</label>
-                                        <input type="date" class="form-control mb-4" formControlName="bornDate"
-                                            id="bornDate" [(ngModel)]="student.bornDate" style="height: 33px;">
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <label for="email">Email*</label>
-                                        <input type="email" formControlName="email" id="email"
-                                            class="form-control" placeholder="E-mail">
-                                        <div
-                                            *ngIf="userForm.get('email').hasError('required') && userForm.get('email').touched">
-                                            <span style="color: red; font-size: small;">Email requerido</span>
+                                        <div>
+                                            <button mat-button matStepperPrevious>Atrás</button>
+                                            <div class="row">
+                                                <div class="col-lg-3"></div>
+                                                <div class="col-lg-3"></div>
+                                                <div class="col-lg-3"></div>
+                                                <div class="col-lg-3">
+                                                    <br>
+                                                    <button class="btn btn-primary"
+                                                        [disabled]="personalData.valid===false || accountData.valid===false || !(accountData.get('confirmEmail').value ===accountData.get('email').value) || !(accountData.get('confirmPassword').value ===accountData.get('password').value)"
+                                                        type="submit" (click)="addStudent()">Guardar</button>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div
-                                            *ngIf="userForm.get('email').hasError('email') && userForm.get('email').touched">
-                                            <span style="color: red; font-size: small;">Email invalido</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <label for="Contraseña">Contraseña*</label>
-                                        <input type="password" class="form-control mb-4" formControlName="password"
-                                            placeholder="Contraseña " name="password" id="password"
-                                            [(ngModel)]="student.account.password">
-                                            <div
-                                            *ngIf="userForm.get('password').hasError('minlength') && userForm.get('password').touched">
-                                            <span style="color: red; font-size: small;">La contraseña debe tener minimo 6 caracteres</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-3"></div>
-                                <div class="col-lg-3"></div>
-                                <div class="col-lg-3"></div>
-                                <div class="col-lg-3">
-                                    <button class="btn btn-primary"
-                                        [disabled]="!(userForm.valid) || !(userForm.get('confirmEmail').value ===userForm.get('email').value) || !(userForm.get('confirmPassword').value ===userForm.get('password').value)"
-                                        type="submit" (click)="addStudent()">Guardar</button>
-                                </div>
-                            </div>
-
-
-                        </form>
+                                    </form>
+                                </mat-step>
+                            </mat-horizontal-stepper>
                         <br>
 
                     </mat-card-content>

@@ -1,0 +1,29 @@
+<html>
+<div class="container">
+    <h2>Administracíon de Usuarios</h2>
+    <div class="row">
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+            <table class="table table-bordered table-striped mb-0">
+              <tr>
+                <th>Identificación</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Rol</th>
+                <th>Admitido</th>
+              </tr>
+              <tr *ngFor="let user of users">
+                <td>{{user.id}}</td>
+                <td>{{user.firstName}}</td>
+                <td>{{user.firstLastName}}</td>
+                <td>{{user.userName }}</td>
+                <td *ngIf="user.rol==='Professor'">Docente</td>
+                <td *ngIf="user.rol==='Student'">Estudiante</td>
+                <td><mat-slide-toggle [(ngModel)]="user.isEnable" (change)="onChange(user)"></mat-slide-toggle></td>
+                <button mat-raised-button (click)="openDialog(user.id, user.email)">Cambiar Contraseña</button>
+              </tr>
+            </table>
+          </div>
+    </div>
+</div>
+</html>

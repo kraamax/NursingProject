@@ -1,0 +1,15 @@
+table.table{
+    table-layout: fixed;
+}
+tr:nth-child(1) {
+    background: #dedede;
+}
+.scrollable {
+    height: 400px;
+    overflow-y: scroll;
+  }
+  .my-custom-scrollbar {
+    position: relative;
+    height: 400px;
+    overflow: auto;
+  }

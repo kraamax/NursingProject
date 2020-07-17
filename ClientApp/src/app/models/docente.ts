@@ -9,6 +9,6 @@ export class Docente {
     bornDate:string;
     sex:string;
     email:string;
-    phone:number;
-    account:Account;
+    phone:string;
+    password: string;
 }

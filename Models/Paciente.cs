@@ -26,5 +26,6 @@ namespace ProyectoEnfermeria.Models
         public string ScholarShip { get; set; }
         public string Occupation { get; set; }  
         public string RegistrationDate { get; set; } 
+        public string ResponsibleNurseId { get; set; }
     }
 }

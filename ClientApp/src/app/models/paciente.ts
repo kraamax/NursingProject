@@ -20,4 +20,5 @@ export class Paciente {
     scholarShip:string;
     occupation:string;
     registrationDate:string;
+    responsibleNurseId:string;
 }

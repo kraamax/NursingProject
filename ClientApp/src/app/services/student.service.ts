@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Student } from '../models/student';
+import { ToastrService } from 'ngx-toastr';
 //import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 //import { MensajeModalComponent } from '../mensaje-modal/mensaje-modal.component';
 
@@ -17,12 +18,12 @@ headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 })
 export class  StudentService {
 
-  constructor(private http:HttpClient, @Inject('BASE_URL') private baseUrl:string,/*private modalService: NgbModal*/) { }
+  constructor(private http:HttpClient, @Inject('BASE_URL') private baseUrl:string,private toastr:ToastrService/*private modalService: NgbModal*/) { }
 
   addStudent (student: Student): Observable<Student> {
     return this.http.post<Student>(this.baseUrl+'api/student', student, httpOptions).pipe(
-    tap((newStudent: Student) => this.log(`Acompañante agregado  id=${newStudent.idStudent}`)),
-    catchError(this.handleError<Student>('addCompanion'))
+    tap(),
+    catchError(this.handleErrorAddStudent<Student>('addCompanion'))
     );
     }
 
@@ -41,12 +42,12 @@ catchError(this.handleError<Student>(`getCompanion id=${id}`))
 );
 }
 
-update (student: Student): Observable<any> {
-  const url = `${this.baseUrl + 'api/student'}/${student.idStudent}`;
-  return this.http.put(url, student, httpOptions).pipe(
-  tap(_ => alert(`Acompañante actualizado id=${student.idStudent}`)),
-  catchError(this.handleError<any>('Update'))
-  );
+  update (student: Student): Observable<any> {
+    const url = `${this.baseUrl + 'api/student'}/${student.idStudent}`;
+    return this.http.put(url, student, httpOptions).pipe(
+    tap(_ => alert(`Acompañante actualizado id=${student.idStudent}`)),
+    catchError(this.handleError<any>('Update'))
+    );
   }
   delete (student: Student | string): Observable<Student> {
     const id = typeof student === 'string' ? student : student.idStudent;
@@ -57,6 +58,15 @@ update (student: Student): Observable<any> {
     catchError(this.handleError<Student>('delete'))
     );
     }
+    private handleErrorAddStudent<T> (operation = 'operation', result?: T) {
+      return (error: any): Observable<T> => {
+        console.error(error);
+        if(error.status==400) this.toastr.error("La identificación registrada ya existe",`El registro falló`);
+        else this.log(`${operation} failed: ${error.error}`);
+        return of(result as T);
+      };
+    }
+    
 private handleError<T> (operation = 'operation', result?: T) {
   return (error: any): Observable<T> => {
   console.error(error);

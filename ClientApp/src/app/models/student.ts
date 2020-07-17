@@ -7,11 +7,10 @@ export class Student {
     firstLastName:string;
     secondLastName:string;
     bornDate:string;
-    phone:number;
+    phone:string;
     sex:string;
     email:string;
-    account:Account;
     locationBiannual:string;
-    
+    password:string;
     
 }

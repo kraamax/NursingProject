@@ -40,6 +40,12 @@
                 </li>
             </ul>
         </li>
+        <li class="nav-item"  *ngIf="role=='Professor'">
+          <a class="nav-link" [routerLink]="['/acceptedStudents']" >Estudiantes</a>
+        </li>
+        <li class="nav-item"  *ngIf="role=='Professor'">
+          <a class="nav-link" [routerLink]="['/studentsRequests']" >Gestionar Solicitudes</a>
+        </li>
         <li>
           <a  routerLinkActive="link-active" routerLink="/home">About</a>
           <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
@@ -55,12 +61,7 @@
             </li>
           </ul>
         </li>
-        <li>
-          <a href="#">Portfolio</a>
-        </li>
-        <li>
-          <a href="#">Contact</a>
-        </li>
+        
       </ul>
 
       <ul class="list-unstyled CTAs">
@@ -89,20 +90,27 @@
             <i class="fa fa-align-justify"></i>
           </button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent" >
             <ul class="nav navbar-nav ml-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="#">Ingresa</a>
-              </li>
               <li class="nav-item">
-                <a class="nav-link" routerLinkActive="link-active"  [routerLink]="['/rol']">Registrate</a>
+                <a class="nav-link" [routerLink]="['/']">Inicio</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Page</a>
+              <li class="nav-item" *ngIf="role=='' || role==null">
+                <a class="nav-link" [routerLink]="['/login']" >Ingresa</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Page</a>
+              <li class="nav-item"*ngIf="role=='' || role==null">
+                <a class="nav-link" [routerLink]="['/rol']" >Registrate</a>
               </li>
+              <li class="nav-item" *ngIf="role=='Student' || role=='Professor'">
+                <a class="nav-link" [routerLink]="['/rol']" >Perfil</a>
+              </li>
+              <li class="nav-item"  *ngIf="role=='Student'">
+                <a class="nav-link" [routerLink]="" (click)="openDialog()">Enviar Solicitud</a>
+              </li>
+              <li class="nav-item"  *ngIf="role=='Student' || role=='Professor'">
+                <a class="nav-link"(click)="logOut()"  [routerLink]="['/login']" >Cerrar Sesión</a>
+              </li>
+              
             </ul>
           </div>
         </div>

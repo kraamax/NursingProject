@@ -41,6 +41,7 @@ public class PacienteController : ControllerBase
                 paciente.RegistrationDate="2019/12/20";
                 paciente.HaveDiabetes=false;
                 paciente.HaveHipertension=true;
+                paciente.ResponsibleNurseId="1234";
                 paciente.BornPlace = "San Diego";
                 paciente.Address = "Calle 4a FZ";
                 _context.Pacientes.Add(paciente);
@@ -57,6 +58,18 @@ public class PacienteController : ControllerBase
                 return NotFound();
             }
                 return paciente;
+        }
+        [HttpGet]
+        [Route("responsibleNurse={responsibleNurseId}")]
+        public async Task<ActionResult<IEnumerable<Paciente>>> GetPacientesByNurse(string responsibleNurseId)
+        {
+            //prueba linq
+            var pacientes = await _context.Pacientes.Where(x=>x.ResponsibleNurseId==responsibleNurseId).ToListAsync();
+            if (pacientes == null)
+            {
+                return NotFound();
+            }
+                return pacientes;
         }
            [HttpGet]
         public async Task<ActionResult<IEnumerable<Paciente>>> GetPacientes()

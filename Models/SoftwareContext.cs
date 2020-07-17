@@ -1,7 +1,8 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 namespace ProyectoEnfermeria.Models
 {
-public class SoftwareContext : DbContext
+public class SoftwareContext : IdentityDbContext
 {
     public SoftwareContext(DbContextOptions<SoftwareContext> options) :
         base(options)
@@ -18,9 +19,9 @@ public class SoftwareContext : DbContext
         public DbSet<VitalSigns> VitalSigns { get; set; }
         public DbSet<PhysicalExam> PhysicalExams { get; set; }
         public DbSet<AnthropometricMeasures> AnthropometricsMeasures { get; set; }
-        public DbSet<Student> Students { get; set; }
         public DbSet<Docente> Docentes { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers{ get; set; }
+        public DbSet<StudentRequest> StudentsRequests { get; set; }
 
-
-}
+    }
 }

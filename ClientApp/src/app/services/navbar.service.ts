@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Subject } from "rxjs";
+import { Subject, BehaviorSubject } from "rxjs";
 
 @Injectable({
   providedIn: "root"
@@ -8,9 +8,11 @@ export class NavbarService {
   visibleSideBar = new Subject<boolean>();
   visibleNavBar = new Subject<boolean>();
 
+
   constructor() {
     this.visibleSideBar.next(false);
     this.visibleNavBar.next(false);
+
   }
   hideSideBar() {
     this.visibleSideBar.next(false);
@@ -24,4 +26,5 @@ export class NavbarService {
   showNavBar() {
     this.visibleNavBar.next(true);
   }
+  
 }

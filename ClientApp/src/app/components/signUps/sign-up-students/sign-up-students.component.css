@@ -27,6 +27,8 @@ option{
 button{
 
     background-color:#1205cc;
+    font-family: 'Poppins';
+    color: white;
 }
 button:hover{
 

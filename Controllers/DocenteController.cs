@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+
 namespace ProyectoEnfermeria.Controllers
 {
 
@@ -12,12 +14,14 @@ namespace ProyectoEnfermeria.Controllers
     public class DocenteController : ControllerBase
     {
         private readonly SoftwareContext _context;
-        public DocenteController(SoftwareContext context)
+        private UserManager<ApplicationUser> _userManager;
+        private SignInManager<ApplicationUser> _signInManager;
+        public DocenteController(SoftwareContext context, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             _context = context;
-            if (_context.Docentes.Count() == 0)
-            {
-            }
+            _userManager = userManager;
+            _signInManager = signInManager;
+
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<Docente>> GetDocente(string id)
@@ -40,10 +44,34 @@ namespace ProyectoEnfermeria.Controllers
         [HttpPost]
         public async Task<ActionResult<Docente>> PostDocente(Docente item)
         {
-            _context.Docentes.Add(item);
-            await _context.SaveChangesAsync();
+            //  _context.Docentes.Add(item);
+            //  await _context.SaveChangesAsync();
+            var applicationProfessor = new ApplicationUser()
+            {
+                Id = item.IdDocente,
+                UserName = item.Email,
+                Email = item.Email,
+                PhoneNumber = item.Phone.ToString(),
+                BornDate = item.BornDate,
+                FirstName = item.FirstName,
+                FirstLastName = item.FirstLastName,
+                SecondName = item.SecondName,
+                SecondLastName = item.SecondLastName,
+                IsEnable = false,
+                Rol = "Profesor",
+                Sex = item.Sex,
+            };
+            try
+            {
+                var result = await _userManager.CreateAsync(applicationProfessor, item.Password);
+                return Ok(result);
+            }
+            catch (System.Exception e)
+            {
 
-            return CreatedAtAction(nameof(GetDocente), new { id = item.IdDocente }, item);
+                return BadRequest(e.ToString());
+            }
+            //return CreatedAtAction(nameof(GetDocente), new { id = item.IdDocente }, item);
 
         }
 

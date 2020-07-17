@@ -3,6 +3,7 @@ import { Paciente } from 'src/app/models/paciente';
 import { PacienteService } from 'src/app/services/paciente.service';
 import { _MatTabBodyBase } from '@angular/material';
 import { NavbarService } from 'src/app/services/navbar.service';
+import { UserLoginService } from 'src/app/services/user-login.service';
 
 @Component({
   selector: 'app-paciente-add',
@@ -12,12 +13,18 @@ import { NavbarService } from 'src/app/services/navbar.service';
 export class PacienteAddComponent implements OnInit {
   paciente:Paciente;
   today:Date;
-  constructor(private pacienteService:PacienteService, private navbarService:NavbarService) { }
+  responsibleNurseId:string;
+  constructor(
+    private pacienteService:PacienteService,
+    private navbarService:NavbarService,
+    private userLoginService:UserLoginService
+    ) { }
 
   ngOnInit() {
   this.navbarService.showNavBar();
   this.navbarService.showSideBar();
   this.generateNewPaciente();
+  this.userLoginService.getLoggedUserProfile().subscribe((res:any)=>this.responsibleNurseId=res.id)
   }
   generateNewPaciente(){
     this.paciente=new Paciente();
@@ -31,6 +38,7 @@ export class PacienteAddComponent implements OnInit {
     this.generateNewPaciente();
     this.paciente.bornDate=(document.getElementById("bornDate") as HTMLInputElement).value;
     this.paciente.idPaciente=(document.getElementById("identificacion") as HTMLInputElement).value;
+    this.paciente.responsibleNurseId=this.responsibleNurseId;
     this.paciente.diagnostic="";
     console.log(this.paciente);
     this.pacienteService.addPaciente(this.paciente).subscribe();

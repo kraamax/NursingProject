@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { Validators, FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Account } from 'src/app/models/account';
 import { Docente } from 'src/app/models/docente';
 import { Location } from '@angular/common';
 import { DocenteService } from 'src/app/services/docente.service';
 import { Router } from '@angular/router';
+import { element } from 'protractor';
+import { log } from 'console';
+import { ToastrService } from 'ngx-toastr';
+import { ApplicationUser } from 'src/app/models/application-user';
+import { ApplicationUserService } from 'src/app/services/application-user.service';
 
 @Component({
   selector: 'app-sign-up-docente',
@@ -15,25 +20,37 @@ export class SignUpDocenteComponent implements OnInit {
 
 
   userForm:FormGroup;
-  docente:Docente;
-  constructor(private formBuilder: FormBuilder,private location:Location,private docenteService:DocenteService, private router:Router) { }
+  user:ApplicationUser;
+  personalData:FormGroup;
+  accountData:FormGroup;
+  constructor(
+    private formBuilder: FormBuilder,
+    private location:Location,
+    private applicationUserService:ApplicationUserService, 
+    private router:Router,
+    private toastr: ToastrService) { }
   ngOnInit() {
-    this.docente=new Docente();
-    this.docente.sex="";
-    this.docente.account=new Account();
-    this.userForm = this.formBuilder.group({
+    this.user=new ApplicationUser();
+    this.user.sex="";
+    this.user.secondLastName="";
+    this.user.secondName="";
+    this.personalData = this.formBuilder.group({
       firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
       secondName: ['', [Validators.pattern('^[a-zA-Z]+$')]],
       secondLastName: ['', [Validators.pattern('^[a-zA-Z]+$')]],
       firstLastName: ['',[Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
       phone: ['', [Validators.required]],
-      password: ['', [Validators.required]],
-      confirmPassword: ['', [Validators.required]],
+     
       identificacion: ['', [Validators.required]],
       bornDate: ['', [Validators.required]],
       sex: ['', [Validators.required]],
+   
+    });
+    this.accountData = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      confirmEmail: ['', [Validators.required, Validators.email]]
+      confirmEmail: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
+      confirmPassword: ['', [Validators.required]],
     });
   }
  goBack(){
@@ -43,11 +60,33 @@ goToLogin(){
   this.router.navigate(["/login"]);
 }
   addDocente(){
-    this.docente.idDocente=(document.getElementById("identificacion") as HTMLInputElement).value;
-    this.docente.email=(document.getElementById("email") as HTMLInputElement).value;
-    this.docente.account.user=(this.docente.email);
-    this.docente.account.activated=false;
-    this.docenteService.addDocente(this.docente).subscribe(rest=>this.goToLogin());
+    this.user.id=(document.getElementById("identificacion") as HTMLInputElement).value;
+    this.user.phoneNumber=(document.getElementById("phone") as HTMLInputElement).value;
+    this.user.email = (document.getElementById("email") as HTMLInputElement).value;
+    this.user.password = (document.getElementById("password") as HTMLInputElement).value;
+    this.user.rol="Professor";
+    this.applicationUserService.addUser(this.user).subscribe((rest:any) => {
+      if(rest.succeeded){
+        console.log(rest);
+        this.toastr.success("Se han registrado con exíto","Operación Realizada");
+        this.goToLogin()
+      }else{
+        rest.errors.forEach(element => {
+          switch (element.code) {
+            case 'DuplicateUserName':
+              this.toastr.error("El usuario ya existe", "Falló el registro");
+              break;
+            default:
+              alert(element.code);
+              break;
+          }
+        });
+      }
+    },
+    err => {
+        console.log(err);
+    }
+    );
   }
   onSubmit(){
     if(this.userForm.valid){
@@ -57,5 +96,4 @@ goToLogin(){
       alert('User form is not valid!!')
     }
   }
-
 }
