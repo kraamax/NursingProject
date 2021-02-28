@@ -1,0 +1,26 @@
+.container{
+    background: #fafafa;
+}
+body{
+    background: #fafafa;
+}
+input{
+    height: 35px;
+}
+mat-label{
+    font-size: 15px;
+    height: 35px !important;
+    display: inline-block;
+}
+mat-form-field{
+    width: 250px;
+}
+button{
+
+    background-color:#1205cc;
+}
+button:hover{
+
+background-color: #190aec;
+
+}

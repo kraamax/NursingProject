@@ -1,0 +1,171 @@
+<body>
+  <form [formGroup]="formGineco">
+  <div class="row">
+    <div class="col-lg-4 ">
+      <div class="form-group">
+        <mat-form-field>
+        <mat-label for="Otherdiagnostic">Menarquia</mat-label>
+        <input
+        matInput
+          type="text"
+          placeholder="Menarquia"
+          id="menarquia"
+          name="menarquia"
+          formControlName="menarche"
+          readonly
+          [(ngModel)]="ginecoBackground.menarche"
+        />
+      </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field>
+        <mat-label>FUM</mat-label>
+        <input
+        matInput
+          type="date"
+          formControlName="fum"
+          style="height:40px ;"
+          id="fum"
+          name="fum"
+          readonly
+          [(ngModel)]="ginecoBackground.fum"
+        />
+      </mat-form-field>
+      </div>
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="form-group">
+            <mat-form-field style="width: 70px;">
+            <mat-label for="G">G</mat-label>
+            <mat-select formControlName="g" id="selectorG" [(ngModel)]="ginecoBackground.g" style="width: 70px;">
+              <mat-option selected="selected" [value]="0">
+                0
+              </mat-option>
+              <mat-option *ngFor="let n of numbers" [value]="n">{{ n }}</mat-option>
+            </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field  style="width: 70px;">
+            <mat-label>C</mat-label>
+            <mat-select formControlName="c" id="selectorC" [(ngModel)]="ginecoBackground.c" style="width: 70px;">
+              <mat-option selected="selected" [value]="0">
+                0
+              </mat-option>
+              <mat-option *ngFor="let n of numbers" [value]="n">{{ n }}</mat-option>
+            </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="form-group">
+            <mat-form-field style="width: 70px;">
+            <mat-label>P</mat-label>
+            <mat-select formControlName="p" id="selectorP" [(ngModel)]="ginecoBackground.p" style="width: 70px;">
+              <mat-option selected="selected" [value]="0">
+                0
+              </mat-option>
+              <mat-option *ngFor="let n of numbers" [value]="n">{{ n }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field style="width: 70px;">
+            <mat-label>A</mat-label>
+            <mat-select formControlName="a" id="selectorA" [(ngModel)]="ginecoBackground.a" style="width: 70px;">
+              <mat-option selected="selected" [value]="0">
+                0
+              </mat-option>
+              <mat-option *ngFor="let n of numbers" [value]="n">{{ n }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+        <mat-form-field>
+            <mat-label>Ciclos</mat-label>
+            <input
+            matInput
+              type="text"
+              placeholder="Ciclos"
+              id="ciclos"
+              name="ciclos"
+              readonly
+              formControlName="ciclos"
+              [(ngModel)]="ginecoBackground.ciclos"
+            />
+          </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field>
+            <mat-label>IVS</mat-label>
+            <input
+              matInput
+              type="text"
+              formControlName="ivs"
+              placeholder="IVS"
+              id="ivs"
+              name="ivs"
+              readonly
+              [(ngModel)]="ginecoBackground.ivs"
+            />
+          </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field>
+            <mat-label>Menopausia</mat-label>
+            <input
+              matInput
+              type="date"
+              formControlName="menopausia"
+              style="height:40px ;"
+              id="menopausia"
+              readonly
+              name="menopausia"
+              [(ngModel)]="ginecoBackground.menopausia"
+            />
+          </mat-form-field>
+          </div>
+          <mat-label></mat-label>
+          <div class="form-group">
+              <mat-checkbox  formControlName="performedCytology" style="width: 20px; height: 20px; vertical-align: bottom;"  [(ngModel)]="ginecoBackground.performedCytology" > Realizó citología</mat-checkbox>
+            </div>    
+    </div>
+   
+    <div class="col-lg-4">
+       
+        <div class="form-group"  [hidden]=!ginecoBackground.performedCytology style="padding-top: 10px;">
+          <mat-form-field>
+            <mat-label>Fecha Citología</mat-label>
+            <input
+            matInput
+              type="date"
+              id="fechaCitologia"
+              name="fechaCitologia"
+              readonly
+              [(ngModel)]="ginecoBackground.dateLastCytology"
+              formControlName="dateLastCytology"
+            />
+          </mat-form-field>
+        </div>
+        <div class="form-group" [hidden]=!ginecoBackground.performedCytology >
+            <mat-label>Resultados Citología</mat-label>
+            <textarea
+              class="form-control rounded-0"
+              name="otherDiagnostic"
+              id="resultadosCitologia"
+              cols="30"
+              rows="5"
+              readonly
+              formControlName="results"
+              [(ngModel)]="ginecoBackground.results"
+            ></textarea>
+          </div>
+         
+    </div>
+  </div>
+</form>
+</body>

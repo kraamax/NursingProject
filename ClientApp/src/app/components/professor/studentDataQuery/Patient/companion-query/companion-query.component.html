@@ -1,0 +1,93 @@
+<header>
+  <div class="container">
+      <h2>Acompañante</h2>
+<br>
+  </div>
+</header>
+<body >
+  <div class="container">
+    <form [formGroup]="formCompanion">
+      <div class="row">
+          <div class="col-lg-2">
+                <div class="form-group">
+                  <mat-form-field>
+                    <mat-label>Nombres</mat-label>
+                    <input
+                      matInput
+                      type="text"
+                      formControlName="names"
+                      [(ngModel)]="companion.names"
+                      id="names"
+                      required
+                      readonly
+                    />
+                  </mat-form-field>
+                </div>
+                <div class="form-group" >
+                  <mat-form-field>
+                    <mat-label>Identificación</mat-label>
+                    <input
+                      matInput
+                      type="number"
+                      formControlName="idCompanion"
+                      [(ngModel)]="companion.idCompanion"
+                      id="id"
+                      required
+                      readonly
+                    />
+                  </mat-form-field>
+                </div>
+                <div class="form-group" >
+                  <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input
+                      matInput
+                      type="email"
+                      formControlName="email"
+                      [(ngModel)]="companion.email"
+                      id="email"
+                      required
+                      readonly
+                    />
+                  </mat-form-field>
+                </div>
+          </div>
+          <div class="col-lg-2">
+
+          </div>
+          <div class="col-lg-2">
+            <div class="form-group" >
+              <mat-form-field>
+                <mat-label>Apellidos</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  formControlName="lastNames"
+                  [(ngModel)]="companion.lastNames"
+                  id="lastNames"
+                  required
+                  readonly
+                />
+              </mat-form-field>
+            </div>
+            <div class="form-group" >
+              <mat-form-field>
+                <mat-label>Teléfono</mat-label>
+                <input
+                  matInput
+                  type="number"
+                  formControlName="phoneNumber"
+                  [(ngModel)]="companion.phoneNumber"
+                  id="phoneNumber"
+                  required
+                  readonly
+                  />
+              </mat-form-field>
+            </div>
+                <br>
+          </div>
+      </div>
+    </form>
+
+  </div>
+</body>

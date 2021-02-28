@@ -552,6 +552,36 @@ namespace ProyectoEnfermeria.Migrations
                     b.ToTable("Pacientes");
                 });
 
+            modelBuilder.Entity("ProyectoEnfermeria.Models.PatientFollowUp", b =>
+                {
+                    b.Property<int>("IdFollowUp")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Date")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Findings")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdPatient")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NIC")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NOC")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NursingDiagnosis")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IdFollowUp");
+
+                    b.ToTable("PatientsFollowUps");
+                });
+
             modelBuilder.Entity("ProyectoEnfermeria.Models.PersonalBackground", b =>
                 {
                     b.Property<int>("IdPersonalBackground")
@@ -591,11 +621,38 @@ namespace ProyectoEnfermeria.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Abdomen")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ears")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Extremities")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Eyes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GenitoUrinary")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Head_Face")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Neck")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nose")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Oropharynx")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PacienteId")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Thorax")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdPhysicalExam");
 

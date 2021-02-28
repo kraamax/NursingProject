@@ -24,6 +24,9 @@ option{
     width:200px ;
     font-family: 'Poppins';
 }
+mat-form-field{
+    display: block;
+}
 button{
 
     background-color:#1205cc;

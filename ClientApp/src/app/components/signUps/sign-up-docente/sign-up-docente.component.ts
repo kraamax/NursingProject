@@ -35,13 +35,13 @@ export class SignUpDocenteComponent implements OnInit {
     this.user.secondLastName="";
     this.user.secondName="";
     this.personalData = this.formBuilder.group({
-      firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
-      secondName: ['', [Validators.pattern('^[a-zA-Z]+$')]],
-      secondLastName: ['', [Validators.pattern('^[a-zA-Z]+$')]],
-      firstLastName: ['',[Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
-      phone: ['', [Validators.required]],
+      firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Z\u00C0-\u00FF ]+$')]],
+      secondName: ['', [Validators.pattern('^[a-zA-Z\u00C0-\u00FF ]+$')]],
+      secondLastName: ['', [Validators.pattern('^[a-zA-Z\u00C0-\u00FF ]+$')]],
+      firstLastName: ['',[Validators.required, Validators.pattern('^[a-zA-Z\u00C0-\u00FF ]+$')]],
+      phone: ['', [Validators.required, Validators.min(0)]],
      
-      identificacion: ['', [Validators.required]],
+      identificacion: ['', [Validators.required, Validators.min(0)]],
       bornDate: ['', [Validators.required]],
       sex: ['', [Validators.required]],
    
@@ -49,7 +49,7 @@ export class SignUpDocenteComponent implements OnInit {
     this.accountData = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       confirmEmail: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(4)]],
       confirmPassword: ['', [Validators.required]],
     });
   }

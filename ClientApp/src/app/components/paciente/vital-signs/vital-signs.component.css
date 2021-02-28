@@ -2,7 +2,6 @@ input{
 
     font-size: 15px;
     height: 30px;
-    width:200px ;
 }
 label{
 
@@ -19,6 +18,9 @@ option{
     font-size: 15px;
     height:30px;
     width:200px ;
+}
+mat-form-field{
+    display: block;
 }
 button{
 

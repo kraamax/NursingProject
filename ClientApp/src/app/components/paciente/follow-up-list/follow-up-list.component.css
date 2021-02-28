@@ -1,0 +1,32 @@
+.container{
+    background: #fafafa;
+}
+button{
+
+    background-color:#1205cc;
+}
+button:hover{
+
+background-color: #190aec;
+
+}
+table.table{
+    table-layout: fixed;
+  
+}
+
+
+
+tr:nth-child(1) {
+    background: #dedede;
+}
+
+.scrollable {
+    height: 450px;
+    overflow-y: scroll;
+  }
+  .my-custom-scrollbar {
+    position: relative;
+    height: 450px;
+    overflow: auto;
+  }

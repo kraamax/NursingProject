@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { AnthropometricMeasures } from 'src/app/models/anthropometric-measures';
 import { AnthropometricMeasuresService } from 'src/app/services/anthropometric-measures.service';
 import { isUndefined } from 'util';
+import { UserLoginService } from 'src/app/services/user-login.service';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-anthropometric-measures',
@@ -13,9 +15,22 @@ export class AnthropometricMeasuresComponent implements OnInit {
 anthropometricMeasures:AnthropometricMeasures;
 isUndefinedMeasure:boolean;
 isEditable:boolean;
-  constructor(private anthropometricMeasuresService:AnthropometricMeasuresService) { }
+formMeasures:FormGroup;
+  constructor(
+    private anthropometricMeasuresService:AnthropometricMeasuresService, private formBuilder:FormBuilder
+    ){
+    }
 
   ngOnInit() {
+    this.formMeasures= this.formBuilder.group({
+      cephalicPerimeter:[],
+      abdominalPerimeter:[],
+      imc:[],
+      size:[],
+      weight:[],
+      thoracicPerimeter:[],
+      interpretation:[]
+    });
     this.isEditable=false;
     this.anthropometricMeasures=new AnthropometricMeasures();
     this.getCurrentAntropometricMeasures();

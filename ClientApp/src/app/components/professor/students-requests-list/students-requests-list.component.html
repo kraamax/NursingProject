@@ -5,6 +5,7 @@
         <div class="table-wrapper-scroll-y my-custom-scrollbar">
             <table class="table table-bordered table-striped mb-0">
               <tr>
+                <th>Fecha</th>
                 <th>Identificación</th>
                 <th>Nombres</th>
                 <th>Apellidos</th>
@@ -13,6 +14,7 @@
                 <th>Ubicación Semestral</th>
               </tr>
               <tr *ngFor="let request of studentsRequests">
+                <td>{{request.date}}</td>
                 <td>{{request.emissorId}}</td>
                 <td>{{request.emissorNames}}</td>
                 <td>{{request.emissorLastNames}}</td>

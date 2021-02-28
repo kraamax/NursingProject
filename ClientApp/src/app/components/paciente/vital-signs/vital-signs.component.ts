@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { VitalSigns } from 'src/app/models/vital-signs';
 import { VitalSignsService } from 'src/app/services/vital-signs.service';
 import { isUndefined } from 'util';
+import { UserLoginService } from 'src/app/services/user-login.service';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-vital-signs',
@@ -13,11 +15,23 @@ export class VitalSignsComponent implements OnInit {
   vitalSigns:VitalSigns;
   isEditable:boolean;
   isUndefinedVitalSigns:boolean;
-  constructor(private vitalSignsService:VitalSignsService) { }
+  formVitalSigns:FormGroup;
+  constructor(private vitalSignsService:VitalSignsService, private formBuilder:FormBuilder) {
+   }
 
   ngOnInit() {
     this.isEditable=false;
     this.vitalSigns=new VitalSigns();
+    this.formVitalSigns=this.formBuilder.group({
+      bpd:[],
+      bps:[],
+      breath:[],
+      pulse:[],
+      temperature:[],
+      typeGlycemia:[],
+      glycemia:[]
+    });
+    this.formVitalSigns.controls["typeGlycemia"].disable();
     this.getCurrentVitalSigns();   
      
   }
@@ -26,15 +40,22 @@ export class VitalSignsComponent implements OnInit {
         if(isUndefined(rest)){
           this.isUndefinedVitalSigns=true;
           this.isEditable=true;
+          this.formVitalSigns.controls["typeGlycemia"].enable();
         }else{
           this.isUndefinedVitalSigns=false;
           this.vitalSigns=rest;
           this.isEditable=false;
+          this.formVitalSigns.controls["typeGlycemia"].disable();
         }
       })
   }
   toggleEdit(){
     this.isEditable=!this.isEditable;
+    if(this.isEditable==false){
+      this.formVitalSigns.controls["typeGlycemia"].disable();
+    }else{
+      this.formVitalSigns.controls["typeGlycemia"].enable();
+    }
   }
   addVitalSigns(){
     if(!isUndefined(this.isUndefinedVitalSigns)){

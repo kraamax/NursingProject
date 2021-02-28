@@ -41,14 +41,13 @@ export class  PacienteService {
   }
   getPacientesByNurse(responsibleNurseId:string):Observable<Paciente[]>{
     return this.http.get<Paciente[]>(this.baseUrl+'api/paciente/responsibleNurse='+responsibleNurseId).pipe(
-    tap(),
-    catchError(this.handleError<Paciente[]>(`getPatientsByNurse id=${responsibleNurseId}`))
+    tap()    
     );
   }
   update (paciente: Paciente): Observable<any> {
     const url = `${this.baseUrl + 'api/paciente'}/${paciente.idPaciente}`;
     return this.http.put(url, paciente, httpOptions).pipe(
-    tap(_ => alert(`Paciente actualizado id=${paciente.idPaciente}`)),
+    tap(_ => alert(`Paciente actualizado+ id=${paciente.idPaciente}`)),
     catchError(this.handleError<any>('PacienteUpdate'))
     );
   }

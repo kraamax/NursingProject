@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { PhysicalExam } from 'src/app/models/physical-exam';
 import { PhysicalExamService } from 'src/app/services/physical-exam.service';
 import { isUndefined } from 'util';
+import { UserLoginService } from 'src/app/services/user-login.service';
 
 @Component({
   selector: 'app-physical-exam',
@@ -13,7 +14,8 @@ export class PhysicalExamComponent implements OnInit {
   isEditable:boolean;
   isUndefinedExam:boolean;
   @Input() idPaciente:string;
-  constructor(private physicalExamService:PhysicalExamService) { }
+  constructor(private physicalExamService:PhysicalExamService) {
+  }
 
   ngOnInit() {
     this.isEditable=false;

@@ -30,6 +30,10 @@ export class LoginComponent implements OnInit {
     this.navBarService.hideSideBar();
     this.navBarService.hideNavBar();
     this.loginModel= new LoginModel();
+    this.userForm= this.formBuilder.group({
+      userName: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
+    });
   }
   login(){
     this.loginService.loginUser(this.loginModel).subscribe((res:any)=>{

@@ -41,7 +41,7 @@ export class SendRequestDialogComponent implements OnInit {
       this.request.isAccepted=false;
       this.request.emissorPhoneNumber=res.phoneNumber;
       this.request.emissorLocationBiannual=res.locationBiannual;
-      this.request.date=new Date().toLocaleString();
+      this.request.date=new Date().toLocaleDateString();
       this.studentRequestService.sendRequest(this.request).subscribe((res:any)=>{
         if(!isUndefined(res.error)){
           this.toastr.info(res.error.message);

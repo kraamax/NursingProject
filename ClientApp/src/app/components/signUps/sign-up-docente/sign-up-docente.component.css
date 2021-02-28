@@ -7,7 +7,7 @@ input{
 
 }
 mat-form-field{
-    width: 250px;
+    display: block;
 }
 label{
 

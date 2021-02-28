@@ -32,10 +32,10 @@ export class  UserLoginService {
   {
       return this.http.post<LoginModel>(this.baseUrl + 'api/ApplicationUser/Login', loginModel, httpOptions);
   }
-  getLoggedUserProfile(): Observable<ApplicationUser[]> 
+  getLoggedUserProfile(): Observable<ApplicationUser> 
   {
     var tokenHeader= new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('token')});
-    return this.http.get<ApplicationUser[]>(this.baseUrl + 'api/UserProfile', {headers:tokenHeader});
+    return this.http.get<ApplicationUser>(this.baseUrl + 'api/UserProfile', {headers:tokenHeader});
   }
   setToken(token:any)
   {

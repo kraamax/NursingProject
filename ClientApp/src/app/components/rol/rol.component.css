@@ -2,29 +2,18 @@ mat-icon{
     height:200px !important;
     width:200px !important;
     font-size:12px !important;
-    display: flex;
+    display: block;
     font-family: 'Poppins';
 }
 
 button{
-    display: flex;
+    display: block;
 }
 body{
     background: #fafafa;
     font-family: 'Poppins';
 }
  
-
-
-.row {
-
-    align-items: center;
-    justify-content: center;
-}
-#Dashboard
-{
- display: flex;
- } 
 label{
     font-size: 20px;
     align-self: center;

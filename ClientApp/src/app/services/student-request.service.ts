@@ -20,19 +20,19 @@ headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 export class  StudentRequestService {
   constructor(private http:HttpClient, @Inject('BASE_URL') private baseUrl:string, private toastr:ToastrService) { }
   sendRequest(request: StudentRequest): Observable<StudentRequest> {
-      return this.http.post<any>(this.baseUrl + 'api/studentRequest', request, httpOptions);
+      return this.http.post<any>(this.baseUrl + 'api/StudentRequest/PostStudentRequest/Register', request, httpOptions);
     }
   getRequests(email:string):Observable<StudentRequest[]>{
-     return this.http.get<StudentRequest[]>(this.baseUrl + `api/studentRequest/${email}`, httpOptions);
+     return this.http.get<StudentRequest[]>(this.baseUrl + `api/StudentRequest/GetStudentsRequestsByProfessor/${email}`, httpOptions);
   }
   AcceptRequest(idRequest:number):Observable<StudentRequest[]>{
-    return this.http.put<StudentRequest[]>(this.baseUrl + `api/studentRequest/${idRequest}`, httpOptions);
+    return this.http.put<StudentRequest[]>(this.baseUrl + `api/studentRequest/AcceptStudentRequest/${idRequest}`, httpOptions);
   }
   DeleteRequest(idRequest:number):Observable<StudentRequest[]>{
-  return this.http.delete<StudentRequest[]>(this.baseUrl + `api/studentRequest/${idRequest}`, httpOptions);
+  return this.http.delete<StudentRequest[]>(this.baseUrl + `api/studentRequest/DeleteRequest/${idRequest}`, httpOptions);
   }
 getAcceptedRequests(email:string){
-  return this.http.get<StudentRequest[]>(this.baseUrl + `api/studentRequest/Accepted/${email}`, httpOptions);
+  return this.http.get<StudentRequest[]>(this.baseUrl + `api/StudentRequest/GetStudentAcceptedByProfessor/Accepted/${email}`, httpOptions);
 }
 
  

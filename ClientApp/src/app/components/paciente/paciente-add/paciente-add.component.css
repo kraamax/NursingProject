@@ -21,6 +21,10 @@ option{
     width:200px ;
 }
 
+mat-form-field{
+    display: block;
+    font-size: 15px;
+}
 button{
 
     background-color:#1205cc;

@@ -10,13 +10,15 @@
                 <th>Apellidos</th>
                 <th>Sexo</th>
                 <th></th>
+                <th></th>
               </tr>
               <tr *ngFor="let p of pacientes">
                   <td>{{p.idPaciente}}</td>
                 <td>{{ p.names }}</td>
                 <td>{{p.lastNames}}</td>
                 <td>{{p.sex}}</td>
-                <td><a routerLink="/clinicHistory/{{p.idPaciente}}">Registrar Historia</a></td>
+                <td><a routerLink="" (click)="goToClinicalHistory(p.idPaciente)">Ver Historia</a></td>
+                <td><a routerLink="" (click)="goToFollowList(p.idPaciente)">Ver Seguimiento</a></td>
               </tr>
             </table>
           </div>

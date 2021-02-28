@@ -19,6 +19,7 @@
                 <td>{{user.userName }}</td>
                 <td *ngIf="user.rol==='Professor'">Docente</td>
                 <td *ngIf="user.rol==='Student'">Estudiante</td>
+                <td *ngIf="user.rol==='Admin'">Admin</td>
                 <td><mat-slide-toggle [(ngModel)]="user.isEnable" (change)="onChange(user)"></mat-slide-toggle></td>
                 <button mat-raised-button (click)="openDialog(user.id, user.email)">Cambiar Contraseña</button>
               </tr>

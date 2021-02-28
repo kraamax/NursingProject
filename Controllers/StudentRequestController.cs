@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoEnfermeria.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class StudentRequestController: ControllerBase
     {
@@ -22,6 +22,7 @@ namespace ProyectoEnfermeria.Controllers
             _userManager=userManager;
         }
         [HttpPost]
+        [Route("Register")]
         public async Task<ActionResult<StudentRequest>> PostStudentRequest(StudentRequest item)
         {
             try

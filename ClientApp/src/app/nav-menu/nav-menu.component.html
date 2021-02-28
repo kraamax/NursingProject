@@ -36,7 +36,7 @@
                     <a routerLinkActive="link-active"  [routerLink]="['/pacienteList']">Historia Clinica</a>
                 </li>
                 <li>
-                    <a href="#">Home 3</a>
+                  <a routerLinkActive="link-active"  [routerLink]="['/patientListFollowUp']">Seguimiento</a>
                 </li>
             </ul>
         </li>
@@ -45,6 +45,9 @@
         </li>
         <li class="nav-item"  *ngIf="role=='Professor'">
           <a class="nav-link" [routerLink]="['/studentsRequests']" >Gestionar Solicitudes</a>
+        </li>
+        <li class="nav-item"  *ngIf="role=='Admin'">
+          <a class="nav-link" [routerLink]="['/admissionRequests']" >Solicitudes de Admisión</a>
         </li>
         <li>
           <a  routerLinkActive="link-active" routerLink="/home">About</a>
@@ -101,13 +104,13 @@
               <li class="nav-item"*ngIf="role=='' || role==null">
                 <a class="nav-link" [routerLink]="['/rol']" >Registrate</a>
               </li>
-              <li class="nav-item" *ngIf="role=='Student' || role=='Professor'">
-                <a class="nav-link" [routerLink]="['/rol']" >Perfil</a>
+              <li class="nav-item" *ngIf="role=='Student' || role=='Professor' || role=='Admin'">
+                <a class="nav-link" [routerLink]="['/userProfile']" >Perfil</a>
               </li>
               <li class="nav-item"  *ngIf="role=='Student'">
                 <a class="nav-link" [routerLink]="" (click)="openDialog()">Enviar Solicitud</a>
               </li>
-              <li class="nav-item"  *ngIf="role=='Student' || role=='Professor'">
+              <li class="nav-item"  *ngIf="role=='Student' || role=='Professor' || role=='Admin'">
                 <a class="nav-link"(click)="logOut()"  [routerLink]="['/login']" >Cerrar Sesión</a>
               </li>
               

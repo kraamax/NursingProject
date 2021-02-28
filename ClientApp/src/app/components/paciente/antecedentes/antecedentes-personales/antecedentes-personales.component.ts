@@ -3,6 +3,7 @@ import { Paciente } from 'src/app/models/paciente';
 import { PersonalBackground } from 'src/app/models/backgrounds/personal-background';
 import { PersonalBackgroundService } from 'src/app/services/Backgrounds/personal-background.service';
 import { isUndefined } from 'util';
+import { UserLoginService } from 'src/app/services/user-login.service';
 
 @Component({
   selector: 'app-antecedentes-personales',
@@ -16,7 +17,8 @@ export class AntecedentesPersonalesComponent implements OnInit {
   personalBackground:PersonalBackground;
   isUndefinedBackground:boolean;
   isEditable:boolean;
-  constructor(private personalBackgroundService:PersonalBackgroundService) { }
+  constructor(private personalBackgroundService:PersonalBackgroundService) {
+   }
 
   ngOnInit() {
     this.personalBackground=new PersonalBackground();

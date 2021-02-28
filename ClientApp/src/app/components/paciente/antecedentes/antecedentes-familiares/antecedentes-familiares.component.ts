@@ -3,6 +3,7 @@ import { Paciente } from 'src/app/models/paciente';
 import { FamilyBackground } from 'src/app/models/backgrounds/family-background';
 import { FamilyBackgroundService } from 'src/app/services/Backgrounds/family-background.service';
 import { isUndefined } from 'util';
+import { UserLoginService } from 'src/app/services/user-login.service';
 
 @Component({
   selector: 'app-antecedentes-familiares',
@@ -14,7 +15,11 @@ export class AntecedentesFamiliaresComponent implements OnInit {
 isEditable:boolean;
 isUndefinedBackground:boolean;
 familyBackground:FamilyBackground;
-  constructor(private familyBackgroundService:FamilyBackgroundService) { }
+  constructor(
+    private familyBackgroundService:FamilyBackgroundService,
+    ) 
+    {
+    }
 
   ngOnInit() {
     this.isEditable=false;

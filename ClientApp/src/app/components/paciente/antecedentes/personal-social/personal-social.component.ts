@@ -4,6 +4,7 @@ import { LifeStyle } from 'src/app/models/life-style';
 import { Habit } from 'src/app/models/habit';
 import { LifeStyleService } from 'src/app/services/life-style.service';
 import { isUndefined, isBuffer } from 'util';
+import { UserLoginService } from 'src/app/services/user-login.service';
 
 @Component({
   selector: 'app-personal-social',
@@ -15,7 +16,8 @@ export class PersonalSocialComponent implements OnInit {
   lifeStyle:LifeStyle;
   isUndefinedBackground:boolean;
   isEditable:boolean;
-  constructor(private lifeStyleService:LifeStyleService) { }
+  constructor(private lifeStyleService:LifeStyleService) {
+   }
   
 
   ngOnInit() {

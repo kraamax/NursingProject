@@ -1,0 +1,33 @@
+<html>
+<div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <h2>Seguimientos</h2>
+      </div>
+      <div class="col-lg-4">
+        <button
+          class="btn btn-primary"
+          style="color: white;"
+          (click)="goToFollowUp()"
+        >
+          Nuevo Seguimiento
+        </button>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+            <table class="table table-bordered table-striped mb-0">
+              <tr>
+                <th>Fecha de registro</th>
+                <th></th>
+              </tr>
+              <tr *ngFor="let f of followUps">
+                  <td>{{f.date}}</td>
+                <td><a routerLink="" (click)="goToFollowUpSee(f.idFollowUp)">ver Seguimiento</a></td>
+              </tr>
+            </table>
+          </div>
+    </div>
+</div>
+</html>

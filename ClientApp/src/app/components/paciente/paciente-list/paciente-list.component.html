@@ -16,7 +16,7 @@
                 <td>{{ p.names }}</td>
                 <td>{{p.lastNames}}</td>
                 <td>{{p.sex}}</td>
-                <td><a routerLink="/clinicHistory/{{p.idPaciente}}">Registrar Historia</a></td>
+                <td><a routerLink="" (click)="goToClinicalHistory(p.idPaciente)">Registrar Historia</a></td>
               </tr>
             </table>
           </div>

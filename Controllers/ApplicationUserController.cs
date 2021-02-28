@@ -62,7 +62,7 @@ namespace ProyectoEnfermeria.Controllers
             catch (Exception ex)
             {
 
-                throw ex;
+                return BadRequest();
             }
         }
         [HttpPost]
@@ -70,9 +70,7 @@ namespace ProyectoEnfermeria.Controllers
         public async Task<Object> PutApplicationUser(ApplicationUserModel model)
         {
             var user = await _userManager.FindByIdAsync(model.Id);
-            user.Id = model.Id;
             user.PhoneNumber = model.PhoneNumber.ToString();
-            user.BornDate = model.BornDate;
             user.FirstName = model.FirstName;
             user.FirstLastName = model.FirstLastName;
             user.SecondName = model.SecondName;

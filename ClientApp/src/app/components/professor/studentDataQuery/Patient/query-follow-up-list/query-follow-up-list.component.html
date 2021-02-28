@@ -1,0 +1,20 @@
+<html>
+<div class="container">
+        <h2>Seguimientos</h2>
+    <br>
+    <div class="row">
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+            <table class="table table-bordered table-striped mb-0">
+              <tr>
+                <th>Fecha de registro</th>
+                <th></th>
+              </tr>
+              <tr *ngFor="let f of followUps">
+                  <td>{{f.date}}</td>
+                <td><a routerLink="" (click)="goToFollowUpSee(f.idFollowUp)">ver Seguimiento</a></td>
+              </tr>
+            </table>
+          </div>
+    </div>
+</div>
+</html>

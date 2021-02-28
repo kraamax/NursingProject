@@ -1,53 +1,136 @@
-<h2>Medidas antropometrícas <button class="btn btn-Primary" style="background:#fafafa;" (click)="toggleEdit()"><img style="height: 20px; width: 20px;" src="../../../../assets/images/pencil.png"></button></h2>
+<h2>
+  Medidas antropometrícas
+  <button
+    class="btn btn-Primary"
+    style="background: #fafafa;"
+    (click)="toggleEdit()"
+  >
+    <img
+      style="height: 20px; width: 20px;"
+      src="../../../../assets/images/pencil.png"
+    />
+  </button>
+</h2>
 <div class="container">
-<div class="row">
+    <form [formGroup]="formMeasures">
+  <div class="row">
     <div class="col-lg-4">
-        <div class="form-group">
-            <label for="peso">Peso</label>
-            <input type="number" [(ngModel)]="anthropometricMeasures.weight" [readonly]=!isEditable  class="form-control form-control-lg " (keyup)="keyPress()"  placeholder="Peso" id="peso">
-        </div>
-        <div class="form-group">
-            <label for="perimetroCefalico">Perímetro cefálico</label>
-            <input type="number" class="form-control form-control-lg " [readonly]=!isEditable [(ngModel)]="anthropometricMeasures.cephalicPerimeter" placeholder="Perímetro cefálico" id="perimetroCefalico">
-        </div>
-        <div class="form-group">
-            <label for="talla">Talla</label>
-            <input type="number" class="form-control form-control-lg " [readonly]=!isEditable [(ngModel)]="anthropometricMeasures.size"  (keyup)="keyPress()"  placeholder="Talla" id="talla">
-        </div>
-        <div class="form-group">
-            <label for="imc">IMC</label>
-            <input type="number"  class="form-control form-control-lg "  [(ngModel)]="anthropometricMeasures.imc" readonly placeholder="IMC" id="imc">
-        </div>
+      <div class="form-group">
+        <mat-form-field>
+          <mat-label>Peso</mat-label>
+          <input
+            matInput
+            type="number"
+            formControlName="weight"
+            [(ngModel)]="anthropometricMeasures.weight"
+            id="weight"
+            required
+            [readonly]="!isEditable"
+          />
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field>
+        <mat-label>Perímetro cefálico</mat-label>
+        <input
+        matInput
+          type="number"
+          [readonly]="!isEditable"
+          [(ngModel)]="anthropometricMeasures.cephalicPerimeter"
+          placeholder="Perímetro cefálico"
+          id="perimetroCefalico"
+          formControlName="cephalicPerimeter"
+        />
+    </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field>
+        <mat-label>Talla</mat-label>
+        <input
+        matInput
+          type="number"
+          [readonly]="!isEditable"
+          [(ngModel)]="anthropometricMeasures.size"
+          (keyup)="keyPress()"
+          placeholder="Talla"
+          formControlName="size"
+          id="talla"
+        />
+    </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field>
+        <mat-label>IMC</mat-label>
+        <input
+        matInput
+          type="number"
+          [(ngModel)]="anthropometricMeasures.imc"
+          readonly
+          placeholder="IMC"
+          id="imc"
+          formControlName="imc"
+        />
+    </mat-form-field>
+      </div>
     </div>
     <div class="col-lg-4">
-        <div class="form-group">
-            <label for="perimetroToracico">Perímetro torácico</label>
-            <input type="number"  class="form-control form-control-lg " [readonly]=!isEditable [(ngModel)]="anthropometricMeasures.thoracicPerimeter" placeholder="Perímetro torácico" id="perimetroToracico">
-        </div>
-        <div class="form-group">
-            <label for="perimetroAbdominal">Perímetro abdominal</label>
-            <input type="number"  class="form-control form-control-lg " [readonly]=!isEditable [(ngModel)]="anthropometricMeasures.abdominalPerimeter" placeholder="Perímetro abdominal" id="perimetroAbdominal">
-        </div>
-        <div class="form-group">
-            <label for="perimetroAbdominal">Interpretacion</label>
-            <textarea
-            class="form-control rounded-0"
-            name="otherDiagnostic"
-            id="textarea"
-            cols="30"
-            rows="5"
-            [readonly]=!isEditable
-            [(ngModel)]="anthropometricMeasures.interpretation"
-          ></textarea>
-        </div>
+      <div class="form-group">
+        <mat-form-field>
+        <mat-label>Perímetro torácico</mat-label>
+        <input
+        matInput
+          type="number"
+          [readonly]="!isEditable"
+          [(ngModel)]="anthropometricMeasures.thoracicPerimeter"
+          placeholder="Perímetro torácico"
+          id="perimetroToracico"
+          formControlName="thoracicPerimeter"
+        />
+    </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field>
+        <mat-label>Perímetro abdominal</mat-label>
+        <input
+        matInput
+          type="number"
+          [readonly]="!isEditable"
+          [(ngModel)]="anthropometricMeasures.abdominalPerimeter"
+          placeholder="Perímetro abdominal"
+          id="perimetroAbdominal"
+          formControlName="abdominalPerimeter"
+        />
+    </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-label>Interpretacion</mat-label>
+        <textarea
+          class="form-control rounded-0"
+          name="otherDiagnostic"
+          id="textarea"
+          cols="30"
+          rows="5"
+          formControlName="interpretation"
+          [readonly]="!isEditable"
+          [(ngModel)]="anthropometricMeasures.interpretation"
+        ></textarea>
+      </div>
     </div>
-</div>
-<div class="row">
+  </div>
+  <div class="row">
     <div class="col-lg-4"></div>
     <div class="col-lg-4">
-        <div class="form-group" style="text-align: right;">
-            <button class="btn btn-primary" [hidden]=!isEditable (click)="addAnthropometricMeasures()">Guardar</button>
-        </div>
+      <div class="form-group" style="text-align: right;">
+        <button
+          class="btn btn-primary"
+          [hidden]="!isEditable"
+          (click)="addAnthropometricMeasures()"
+        >
+          Guardar
+        </button>
+      </div>
     </div>
-</div>
+  </div>
+</form>
+
 </div>

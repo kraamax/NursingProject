@@ -1,0 +1,110 @@
+    <div class="container">
+        <h2>
+            Perfil
+            <button
+              class="btn btn-Primary"
+              style="background: #fafafa;"
+              (click)="toggleEdit()"
+            >
+              <img
+                style="height: 20px; width: 20px;"
+                src="../../../../assets/images/pencil.png"
+              />
+            </button>
+          </h2>
+<body>
+    <br>
+        <form [formGroup]="personalData">
+            <ng-template matStepLabel>Datos personales</ng-template>
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="form-group mb-2">
+                        <mat-form-field>
+                            <mat-label>Primer Nombre</mat-label>
+                            <input matInput placeholder="Primer Nombre"
+                                formControlName="firstName" id="firstName" [(ngModel)]="user.firstName" required>
+                        </mat-form-field>
+                    </div>
+                    <div class="form-group mb-2">
+                        <mat-form-field>
+                            <mat-label>Primer Apellido</mat-label>
+                            <input matInput placeholder="Primer Apellido"
+                                formControlName="firstLastName" id="firstLastName" [(ngModel)]="user.firstLastName" required>
+                        </mat-form-field>
+                    </div>
+                    <div class="form-group mb-2">
+                        <mat-form-field>
+                            <mat-label>Identificacion</mat-label>
+                            <input matInput type="number" min="0" readonly placeholder="Identificacion"
+                                formControlName="identificacion"  id="identificacion" [(ngModel)]="user.id" required>
+                        </mat-form-field>
+                    </div>
+                    <div class="form-group mb-2">
+                        <mat-form-field>
+                            <mat-label>Sexo</mat-label>
+                            <mat-select formControlName="sex"  id="sex"  [(ngModel)]="user.sex">
+                                <mat-option value="Femenino">Femenino</mat-option>
+                                <mat-option value="Masculino">Masculino</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-5">
+                    <div class="form-group mb-2">
+                        <mat-form-field>
+                            <mat-label>Segundo Nombre</mat-label>
+                            <input matInput placeholder="Segundo Nombre"
+                                formControlName="secondName" id="secondName" [(ngModel)]="user.secondName">
+                        </mat-form-field>
+                    </div>
+                    <div class="form-group mb-2">
+                        <mat-form-field>
+                            <mat-label>Segundo Apellido</mat-label>
+                            <input matInput placeholder="Segundo Apellido"
+                                formControlName="secondLastName"  id="secondLastName" [(ngModel)]="user.secondLastName">
+                        </mat-form-field>
+                    </div>
+                    <div class="form-group mb-2">
+                        <mat-form-field>
+                            <mat-label>Telefono</mat-label>
+                            <input matInput type="number" min="0" placeholder="Telefono"
+                                formControlName="phone"  id="phone"  [(ngModel)]="user.phoneNumber" required>
+                        </mat-form-field>
+                    </div>
+                    <div class="form-group mb-2">
+                        <mat-form-field>
+                            <mat-label>Fecha de Nacimiento</mat-label>
+                            <input matInput type="date" readonly formControlName="bornDate" id="bornDate"  [(ngModel)]="user.bornDate" required>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <br>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group" style="text-align: left;">
+                    <button
+                      class="btn btn-primary"
+                      (click)="openDialogChangePassword(user.id, user.email)"
+                    >
+                      Cambiar Contraseña
+                    </button>
+                  </div>
+            </div>
+    <div class="col-lg-4"></div>
+            <div class="col-lg-2">
+                <div class="form-group" style="text-align: right;">
+                    <button
+                      class="btn btn-primary"
+                      (click)="updateProfile()"
+                      *ngIf="personalData.enabled"
+                    >
+                      Guardar
+                    </button>
+                  </div>
+            </div>
+          </div>
+</body>
+    </div>

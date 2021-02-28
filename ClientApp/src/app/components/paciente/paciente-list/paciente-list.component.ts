@@ -4,6 +4,8 @@ import { PacienteService } from 'src/app/services/paciente.service';
 import { NavbarService } from 'src/app/services/navbar.service';
 import { DataParametersService } from 'src/app/services/data-parameters.service';
 import { Router, Route, ActivatedRoute } from '@angular/router';
+import { EncryptionService } from 'src/app/services/encryption.service';
+import { UserLoginService } from 'src/app/services/user-login.service';
 
 @Component({
   selector: 'app-paciente-list',
@@ -18,7 +20,9 @@ pacientes:Paciente[];
     private navbarService:NavbarService,
     private dataParametersService:DataParametersService,
     private router:Router,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private encyptionService:EncryptionService,
+    private userLoginService:UserLoginService
     ) { }
 
   ngOnInit() {
@@ -29,10 +33,12 @@ pacientes:Paciente[];
     this.route.queryParams.subscribe(params=>console.log(params));
   }
   getPacientes(){
-    this.pacienteService.getPacientes().subscribe(pacientes=>this.pacientes=pacientes);
+    this.userLoginService.getLoggedUserProfile().subscribe((res:any)=>{
+      this.pacienteService.getPacientesByNurse(res.id).subscribe(pacientes=>this.pacientes=pacientes);
+    })
   }
-  /*goToClinicHistory(idPaciente:any){
-    this.router.navigateByUrl("/clinicHistory");
-    this.dataParametersService.setIdPatient(idPaciente);
-  }*/
+  goToClinicalHistory(idPaciente:any){
+    var encryptedId=this.encyptionService.encrypt(idPaciente);
+    this.router.navigate(["clinicHistory",encryptedId]);
+  }
 }

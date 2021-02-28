@@ -22,6 +22,7 @@ public class SoftwareContext : IdentityDbContext
         public DbSet<Docente> Docentes { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers{ get; set; }
         public DbSet<StudentRequest> StudentsRequests { get; set; }
+        public DbSet<PatientFollowUp> PatientsFollowUps { get; set; }
 
     }
 }

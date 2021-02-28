@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavbarService } from 'src/app/services/navbar.service';
 import { PacienteService } from 'src/app/services/paciente.service';
 import { Paciente } from 'src/app/models/paciente';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EncryptionService } from 'src/app/services/encryption.service';
 
 @Component({
@@ -17,7 +17,8 @@ export class PatientsByStudentListComponent implements OnInit {
     private navbarService:NavbarService, 
     private pacienteService: PacienteService,
     private route:ActivatedRoute,
-    private encryptionService:EncryptionService
+    private encryptionService:EncryptionService,
+    private router:Router
     ) { }
 
   ngOnInit() {
@@ -36,5 +37,13 @@ export class PatientsByStudentListComponent implements OnInit {
       this.pacientes=pacientes;
       console.log(this.idUser);
     });
+  }
+  goToClinicalHistory(idPaciente:any){
+    var encryptedId=this.encryptionService.encrypt(idPaciente);
+    this.router.navigate(["clinicalHistoryQ",encryptedId]);
+  }
+  goToFollowList(idPaciente:any){
+    var encryptedId=this.encryptionService.encrypt(idPaciente);
+    this.router.navigate(["queryFollowUpList",encryptedId]);
   }
 }

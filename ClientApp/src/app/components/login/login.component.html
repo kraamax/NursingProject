@@ -30,13 +30,20 @@
                   <div class="alert alert-danger" role="alert" *ngIf="isError">
                     Something is wrong!
                   </div>
-                  <div class="form-group">
-                    <input type="text" id="user" name="user" class="form-control" placeholder="Usuario" [(ngModel)]="loginModel.userName" required>
-                  </div>
-                  <div class="form-group">
-                    <input type="password" id="password" name="password" [(ngModel)]="loginModel.password" class="form-control" placeholder="Contraseña" 
-                      required>
-                  </div>
+                  <form [formGroup]="userForm">
+                    <mat-form-field>
+                      <mat-label>Email</mat-label>
+                      <input matInput placeholder="Email"
+                          type="email"
+                          formControlName="userName" id="userName" [(ngModel)]="loginModel.userName">
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput 
+                        type="password"
+                        formControlName="password" id="password" [(ngModel)]="loginModel.password">
+                </mat-form-field>
+                  </form>
                   <div class="form-gruop">
                   <label for=""><a [routerLink]="['/rol']">Eres nuevo? Registrate</a></label>
                 </div>

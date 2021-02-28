@@ -1,28 +1,130 @@
 
-<h2>Revisión por sistema y Examen Físico <button class="btn btn-Primary" style="background:#fafafa;" (click)="toggleEdit()"><img style="height: 20px; width: 20px;" src="../../../../assets/images/pencil.png"></button></h2>
+<h2>Revisión por sistema y Examen Físico <button class="btn btn-Primary" style="background:#fafafa;" (click)="toggleEdit()"><img style="height: 30px; width: 30px;" src="../../../../assets/images/pencil.png"></button></h2>
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-lg-10">
+            <div class="col-lg-6">
                 <div class="form-group">
-                    <label for="perimetroAbdominal">Interpretacion</label>
+                    <label>Cabeza-Cara</label>
                     <textarea
                     class="form-control rounded-0"
-                    name="otherDiagnostic"
-                    id="textarea"
+                    id="head_Face"
                     cols="30"
-                    rows="5"
+                    rows="2"
                     [readonly]=!isEditable
-                    [(ngModel)]="physicalExam.description"
+                    [(ngModel)]="physicalExam.head_Face"
                   ></textarea>
                 </div>
+            <div class="form-group">
+                <label>Ojos</label>
+                <textarea
+                class="form-control rounded-0"
+                id="eyes"
+                cols="30"
+                rows="2"
+                [readonly]=!isEditable
+                [(ngModel)]="physicalExam.eyes"
+              ></textarea>
             </div>
-          
+            <div class="form-group">
+              <label>Oidos</label>
+              <textarea
+              class="form-control rounded-0"
+              id="ears"
+              cols="30"
+              rows="2"
+              [readonly]=!isEditable
+              [(ngModel)]="physicalExam.ears"
+            ></textarea>
+          </div>
+            <div class="form-group">
+                <label>Nariz</label>
+                <textarea
+                class="form-control rounded-0"
+                name="otherDiagnostic"
+                id="nose"
+                cols="30"
+                rows="2"
+                [readonly]=!isEditable
+                [(ngModel)]="physicalExam.nose"
+              ></textarea>
+            </div>
+            <div class="form-group">
+                <label>Orofaringe</label>
+                <textarea
+                class="form-control rounded-0"
+                id="oropharynx"
+                cols="30"
+                rows="2"
+                [readonly]=!isEditable
+                [(ngModel)]="physicalExam.oropharynx"
+              ></textarea>
+            </div>
+            
+            </div>
+            <div class="col-lg-6">
+            <div class="form-group">
+              <div class="form-group">
+                <label>Cuello</label>
+                <textarea
+                class="form-control rounded-0"
+                id="neck"
+                cols="30"
+                rows="2"
+                [readonly]=!isEditable
+                [(ngModel)]="physicalExam.neck"
+              ></textarea>
+            </div>
+                <label>Torax</label>
+                <textarea
+                class="form-control rounded-0"
+                name="otherDiagnostic"
+                id="thorax"
+                cols="30"
+                rows="2"
+                [readonly]=!isEditable
+                [(ngModel)]="physicalExam.thorax"
+              ></textarea>
+            </div>
+            <div class="form-group">
+                <label>Abdomen</label>
+                <textarea
+                class="form-control rounded-0"
+                id="abdomen"
+                cols="30"
+                rows="2"
+                [readonly]=!isEditable
+                [(ngModel)]="physicalExam.abdomen"
+              ></textarea>
+            </div>
+            <div class="form-group">
+                <label>Genitourinario</label>
+                <textarea
+                class="form-control rounded-0"
+                id="genitoUrinary"
+                cols="30"
+                rows="2"
+                [readonly]=!isEditable
+                [(ngModel)]="physicalExam.genitoUrinary"
+              ></textarea>
+            </div>
+            <div class="form-group">
+                <label>Extremidades</label>
+                <textarea
+                class="form-control rounded-0"
+                id="extremities"
+                cols="30"
+                rows="2"
+                [readonly]=!isEditable
+                [(ngModel)]="physicalExam.extremities"
+              ></textarea>
+            </div>
+        </div>
         </div>
         <div class="row">
-            <div class="col-lg-5"></div>
+            <div class="col-lg-10"></div>
 
-            <div class="col-lg-5">
+            <div class="col-lg-2">
                 <div class="form-group" style="text-align: right;">
                     <button class="btn btn-primary" [hidden]=!isEditable (click)="addPhysicalExam()">Guardar</button>
                 </div>

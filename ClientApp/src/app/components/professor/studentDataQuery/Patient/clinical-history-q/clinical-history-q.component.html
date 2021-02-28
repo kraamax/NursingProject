@@ -1,0 +1,84 @@
+<html>
+<body>
+
+<div class="container">
+    <mat-tab-group dynamicHeight (selectedTabChange)="onTabClick($event)">
+        <mat-tab label="Datos Personales">
+            <ng-template matTabContent>
+                <br>
+                <app-patient-query [paciente]=paciente></app-patient-query>
+            </ng-template>
+        </mat-tab>
+        <mat-tab label="Acompañante">
+            <div class="Container">
+                <br>
+                <app-companion-query [idPaciente]=paciente.idPaciente [companionIsUndefined]=companionIsUndefined
+                    [companion]=companion></app-companion-query>
+            </div>
+        </mat-tab>
+        <mat-tab label="Antecedentes">
+            <div class="container">
+                <ng-template matTabContent>
+                    <mat-accordion>
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                             Antecedentes Personales
+                            </mat-expansion-panel-header>
+                        <app-personal-bg [idPaciente]=paciente.idPaciente></app-personal-bg>
+                        </mat-expansion-panel>
+                        <mat-expansion-panel *ngIf="paciente.sex==='Femenino'">
+                            <mat-expansion-panel-header>
+                             Antecedentes Gineco Obstetricos
+                            </mat-expansion-panel-header>
+                        <app-gineco-bg [idPaciente]=paciente.idPaciente></app-gineco-bg>
+                        </mat-expansion-panel>
+                       
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                             Antecedentes Familiares
+                            </mat-expansion-panel-header>
+                            <app-familiar-bg [idPaciente]=paciente.idPaciente></app-familiar-bg>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </ng-template>
+
+            </div>
+        </mat-tab>
+        <mat-tab label="Estilo de vida">
+            <ng-template matTabContent>
+            <div class="Container">
+                <br>
+                <app-life-style [idPaciente]=paciente.idPaciente ></app-life-style>
+            </div>
+        </ng-template>
+        </mat-tab>
+        <mat-tab label="Signos Vitales">
+            <ng-template matTabContent>
+            <div class="Container">
+                <br>
+                <app-vital-signs-q [idPaciente]=paciente.idPaciente ></app-vital-signs-q>
+            </div>
+        </ng-template>
+        </mat-tab>
+        <mat-tab label="Medidas Antropometrícas">
+            <ng-template matTabContent>
+            <div class="Container">
+                <br>
+                <app-anthropometrics-measures-q [idPaciente]=paciente.idPaciente ></app-anthropometrics-measures-q>
+            </div>
+        </ng-template>
+        </mat-tab>
+        <mat-tab label="Revisión por sistema y Examen Físico">
+            <ng-template matTabContent>
+            <div class="Container">
+                <br>
+                <app-physical-exam-q [idPaciente]=paciente.idPaciente ></app-physical-exam-q>
+            </div>
+        </ng-template>
+        </mat-tab>
+     
+    </mat-tab-group>
+</div>
+    
+</body>
+</html>

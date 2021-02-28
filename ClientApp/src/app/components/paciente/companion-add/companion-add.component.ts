@@ -3,6 +3,8 @@ import { Companion } from "src/app/models/companion";
 import { Paciente } from "src/app/models/paciente";
 import { CompanionService } from "src/app/services/companion.service";
 import { isUndefined } from "util";
+import { UserLoginService } from "src/app/services/user-login.service";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-companion-add",
@@ -16,7 +18,9 @@ export class CompanionAddComponent implements OnInit {
   wasUndefined: boolean;
   isReadOnly: boolean;
   isEditable:boolean;
-  constructor(private companionService: CompanionService) {}
+  formCompanion:FormGroup;
+  constructor(private companionService: CompanionService, private formBuilder:FormBuilder) {
+  }
   ngOnChanges() {
     if (this.companionIsUndefined) {
       this.isReadOnly = false;
@@ -31,6 +35,13 @@ export class CompanionAddComponent implements OnInit {
   ngOnInit() {
     this.companion = new Companion();
     this.isEditable=false;
+    this.formCompanion= this.formBuilder.group({
+      names:[],
+      lastNames:[],
+      idCompanion:[],
+      phoneNumber:[],
+      email:[Validators.email]
+    });
   }
   toggleEdit(){
     this.isEditable=!this.isEditable;
@@ -38,9 +49,8 @@ export class CompanionAddComponent implements OnInit {
   saveCompanion() {
     if (!isUndefined(this.wasUndefined)) {
       if (this.wasUndefined) {
-        this.companion.idCompanion = (document.getElementById(
-          "identificacion"
-        ) as HTMLInputElement).value;
+        this.companion.idCompanion = (document.getElementById("id") as HTMLInputElement).value;
+        this.companion.phoneNumber = (document.getElementById("phoneNumber") as HTMLInputElement).value;
         this.companion.pacienteId = this.idPaciente;
         this.companionService.addCompanion(this.companion).subscribe(rest=>{
           this.isReadOnly=true;

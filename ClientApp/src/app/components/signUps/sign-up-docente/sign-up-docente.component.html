@@ -11,7 +11,7 @@
                         <div class="row">
 
                             <div class="col-lg-2 ">
-                                <button mat-icon-button style="background: #fafafa; color: black;" (click)="goBack()">
+                                <button mat-icon-button style="background: #fafafa; color:black;" (click)="goBack()">
                                     <mat-icon>arrow_back</mat-icon>
                                 </button>
                             </div>
@@ -28,7 +28,7 @@
                                 <form [formGroup]="personalData">
                                     <ng-template matStepLabel>Datos personales</ng-template>
                                     <div class="row">
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-5">
                                             <div class="form-group mb-2">
                                                 <mat-form-field>
                                                     <mat-label>Primer Nombre</mat-label>
@@ -46,8 +46,8 @@
                                             <div class="form-group mb-2">
                                                 <mat-form-field>
                                                     <mat-label>Identificacion</mat-label>
-                                                    <input matInput type="number" placeholder="Identificacion"
-                                                        formControlName="identificacion"  id="identificacion" [(ngModel)]="user.idDocente" required>
+                                                    <input matInput type="number" min="0" placeholder="Identificacion"
+                                                        formControlName="identificacion"  id="identificacion" [(ngModel)]="user.id" required>
                                                 </mat-form-field>
                                             </div>
                                             <div class="form-group mb-2">
@@ -60,7 +60,8 @@
                                                 </mat-form-field>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-1"></div>
+                                        <div class="col-lg-5">
                                             <div class="form-group mb-2">
                                                 <mat-form-field>
                                                     <mat-label>Segundo Nombre</mat-label>
@@ -78,8 +79,8 @@
                                             <div class="form-group mb-2">
                                                 <mat-form-field>
                                                     <mat-label>Telefono</mat-label>
-                                                    <input matInput type="number" placeholder="Telefono"
-                                                        formControlName="phone"  id="phone"  [(ngModel)]="user.phone" required>
+                                                    <input matInput type="number" min="0" placeholder="Telefono"
+                                                        formControlName="phone"  id="phone"  [(ngModel)]="user.phoneNumber" required>
                                                 </mat-form-field>
                                             </div>
                                             <div class="form-group mb-2">
@@ -99,7 +100,7 @@
                                 <form [formGroup]="accountData">
                                     <ng-template matStepLabel>Datos de su cuenta</ng-template>
                                     <div class="row">
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-5">
                                             <div class="form-group mb-2">
                                                 <mat-form-field>
                                                     <mat-label>Email</mat-label>
@@ -123,7 +124,8 @@
                                                 </mat-form-field>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-1"></div>
+                                        <div class="col-lg-5">
                                             <div class="form-group mb-2">
                                                 <mat-form-field>
                                                     <mat-label>Confirmar Email</mat-label>
